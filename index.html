@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Life of Squirrels</title>
+    <link rel="icon" href="style/images/squirrel.png">
+    <link rel="stylesheet" href="style/styles.css">
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid" id="start-page">
+        <h1 class="jumbotron text-center title-text">Life of Squirrels</h1>
+        <div class="start-page-body"></div>
+        <div class="text-center start-game">
+            <button onclick="startGame()" type="button" class="btn btn-info btn-lg">Start Game</button>
+        </div>
+        <div class="text-center how-to-play">
+            <button type="button" class="btn btn-dark btn-lg" id="how-to-play" data-toggle="modal" data-target="#exampleModalCenter">How
+                to Play</button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="100" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Instructions</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h1 class="text-center title-text">How To Play</h1>
+                            <p>In this game, you are a squirrel traveling up trees, trying to avoid obstacles.</p>
+                            <p>To do this, you will switch between trees by pressing either the left or right arrow
+                                keys.</p>
+                            <p>You will start the game with 3 hearts (hitting branches or construction cones will
+                                deduct one heart, while hitting a hawk will result in an instant game over).</p>
+                            <p>The more acorns or Chick-Fil-A sandwiches you get, the more points you will collect in the game. These points can
+                                be exchanged for customizable skins. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <div class="container-fluid">
+        <!-- Screen where game will be played -->
+        <div class="hidden" id="gameScreen">
+            <!-- Info bar that will hold health, score and a timer -->
+            <div class="row" id="infoBar">
+                <div class="col" id="scoreContainer">
+                    
+                    <div class="text-center custom-button">
+                        <button onclick="customChar()" type="button" class="btn btn-dark btn-lg">Customize</button>
+                    </div>
+                    <div class="text-center back-button">
+                        <button onclick="titleScreen()" type="button" class="btn btn-info btn-lg">Home</button>
+                    </div>
+                </div>
+                <div class="col-6" id="playerHealth">
+                    <div class="row" id="healthHolder">
+                        <div class="col" id="heart">
+                            <img src='style/images/heart.png' id="heart3">
+                        </div>
+                        <div class="col" id="heart">
+                            <img src='style/images/heart.png' id="heart2">
+                        </div>
+                        <div class="col" id="heart">
+                            <img src='style/images/heart.png' id="heart1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col" id="gameTimer">
+                    <h2><time>00:00:00</time></h2>
+                    <div id="playerScoreTitle">Score:</div>
+                    <div id="playerScore">1000</div>
+                </div>
+            </div>
+
+            <!-- Row that will visualize the squirrel and it's movement -->
+            <div class="row" id="game">
+                <div id="squirrel">
+                    <img src="style/images/squirrel-right.gif" id="squirrelImg">
+                </div>
+                <div class="col" id="tree">
+                </div>
+                <div id = "obstacles">
+                    <img class="hidden left-obj" id = "branch_left" src="style/images/branch_left.png" style="height:10%;">
+                    
+                    <img class="hidden right-obj" id = "branch_right" src="style/images/branch_right.png" style="height:10%;">
+                    
+                    <img class="hidden left-obj" id = "chickfila_left" src="style/images/chickfila.png" style = "height:10%;">
+                    
+                    <img class="hidden right-obj" id = "chickfila_right" src="style/images/chickfila.png" style = "height:10%;">
+                    
+                    <img class="hidden left-obj" id = "acorn_left" src="style/images/acorn.png" style = "height:10%;">
+                    
+                    <img class="hidden right-obj" id = "acorn_right" src="style/images/acorn.png" style = "height:10%;">
+                    
+                    <img class="hidden left-obj" id = "gold_acorn_left" src="style/images/golden_acorn.png" style = "height:10%;">
+                    
+                    <img class="hidden right-obj" id = "gold_acorn_right" src="style/images/golden_acorn.png" style = "height:10%;">
+                    
+                    <img class="hidden left-obj" id = "cone_left" src="style/images/construction_cone_left.png" style = "height:15%;">
+                    
+                    <img class = "hidden right-obj" id = "cone_right" src="style/images/construction_cone_right.png" style = "height:15%;">
+                    
+                    <img class="hidden left-obj" id = "hawk_left" src="style/images/hawk.gif" style = "height:30%;">
+                    
+                    <img class="hidden right-obj" id = "hawk_right" src="style/images/hawk.gif" style = "height:30%;">
+                </div>
+                <div class="col-6" id="bg">
+                </div>
+                <div class="col" id="tree">
+                </div>
+            </div>
+        </div>
+        <div id = "obstacles">
+            <div class="hidden" id = "branch_left">
+            </div>
+            <div class="hidden" id = "branch_right">
+            </div>
+        </div>
+    </div>
+    <!-- End Game Screen -->
+    <div class="hidden" id="end-page">
+        <h1 class="jumbotron text-center title-text">Game Over!<br/><p class="lead" id="endGameText"></p></h1>      
+                <center><a class="btn btn-primary btn-lg" href="#" role="button" onclick="titleScreen()" id="restartButton">Try
+                    Again</a></center>
+            </p>
+    </div>
+
+    <!-- Bootstrap javascript libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
