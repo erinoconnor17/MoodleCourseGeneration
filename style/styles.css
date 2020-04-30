@@ -24,6 +24,14 @@ body{
     background-color: lightblue;
 }
 
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue;
+}
+
+
 #titleText{
     position: absolute;
     font-family: 'Muli', sans-serif;
@@ -56,10 +64,11 @@ body{
     padding: 15px 0;
     position: absolute;
 }
-.custom-button{
+.submit-button{
     font-family: 'Muli', sans-serif;
-    padding: 15px 130px;
+    width: 50%;
     position: absolute;
+    bottom: 0;
 }
 
 #start-page{
