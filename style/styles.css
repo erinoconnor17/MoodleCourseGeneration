@@ -4,7 +4,7 @@ body{
 
 #infoBar{
     height: 15vh;
-    background-color: rgb(150, 97, 0);
+    background-color:gray;
     
 }
 
@@ -20,8 +20,13 @@ body{
     overflow: hidden;
 }
 
-#scoreContainer{
-background-color: lightblue;
+#buttonContainer{
+    background-color: lightblue;
+}
+
+#titleText{
+    position: absolute;
+    font-family: 'B612', sans-serif;
 }
 
 
@@ -33,21 +38,21 @@ background-color: lightblue;
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'B612', sans-serif;
     font-size:3.5rem;
 }
 .start-page{
     margin-bottom: 6.63129973474801vh;
     margin-top: 46.41909814323608vh;
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'B612', sans-serif;
 }
 .back-button{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'B612', sans-serif;
     padding: 15px 0;
     position: absolute;
 }
 .custom-button{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'B612', sans-serif;
     padding: 15px 130px;
     position: absolute;
 }
@@ -62,7 +67,7 @@ background-color: lightblue;
     min-height: 100%;
     height:auto !important;
     height: 100%; 
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'B612', sans-serif;
     padding: 15px 0;
     position: absolute;
 }
