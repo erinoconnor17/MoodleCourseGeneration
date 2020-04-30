@@ -26,7 +26,7 @@ body{
 
 #titleText{
     position: absolute;
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
 }
 
 
@@ -38,21 +38,26 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-size:3.5rem;
+}
+.smaller-title-text{
+    font-family: 'Muli', sans-serif;
+    font-size:2.5rem;
+    position: center;
 }
 .start-page{
     margin-bottom: 6.63129973474801vh;
     margin-top: 46.41909814323608vh;
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
 }
 .back-button{
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
     padding: 15px 0;
     position: absolute;
 }
 .custom-button{
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
     padding: 15px 130px;
     position: absolute;
 }
@@ -67,7 +72,7 @@ body{
     min-height: 100%;
     height:auto !important;
     height: 100%; 
-    font-family: 'B612', sans-serif;
+    font-family: 'Muli', sans-serif;
     padding: 15px 0;
     position: absolute;
 }
