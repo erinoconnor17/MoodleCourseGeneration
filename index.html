@@ -35,8 +35,8 @@
     <div class="container-fluid" id="start-page">
         <h1 class="jumbotron text-center title-text">Moodle Exam Generator</h1>
         <div class="start-page-body"></div>
-        <div class="text-center start-game">
-            <button onclick="startGame()" type="button" class="btn btn-info btn-lg">Start Exam</button>
+        <div class="text-center start-exam">
+            <button onclick="startExam()" type="button" class="btn btn-info btn-lg">Start Exam</button>
         </div>
         <br />
         <br />
@@ -44,35 +44,13 @@
 
     <div class="container-fluid">
         <!-- Screen where game will be played -->
-        <div class="hidden" id="gameScreen">
+        <div class="hidden" id="courseScreen">
             <!-- Info bar that will hold health, score and a timer -->
             <div class="row" id="infoBar">
                 <div class="col" id="scoreContainer">
-                    
-                    <div class="text-center custom-button">
-                        <button onclick="customChar()" type="button" class="btn btn-dark btn-lg">Customize</button>
-                    </div>
                     <div class="text-center back-button">
                         <button onclick="titleScreen()" type="button" class="btn btn-info btn-lg">Home</button>
                     </div>
-                </div>
-                <div class="col-6" id="playerHealth">
-                    <div class="row" id="healthHolder">
-                        <div class="col" id="heart">
-                            <img src='style/images/heart.png' id="heart3">
-                        </div>
-                        <div class="col" id="heart">
-                            <img src='style/images/heart.png' id="heart2">
-                        </div>
-                        <div class="col" id="heart">
-                            <img src='style/images/heart.png' id="heart1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col" id="gameTimer">
-                    <h2><time>00:00:00</time></h2>
-                    <div id="playerScoreTitle">Score:</div>
-                    <div id="playerScore">1000</div>
                 </div>
             </div>
 

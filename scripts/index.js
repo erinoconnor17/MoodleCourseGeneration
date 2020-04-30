@@ -345,7 +345,7 @@ function addHeart() {
 }
 
 function titleScreen() {
-    $('#gameScreen').addClass('hidden');
+    $('#courseScreen').addClass('hidden');
     $('#directions-page').addClass('hidden');
     $('#end-page').addClass('hidden');
     $('#start-page').removeClass('hidden');
@@ -356,11 +356,11 @@ function titleScreen() {
     playerAlive = false;
     flag = 1;
 }
-function startGame() {
+function startExam() {
     $('#start-page').addClass('hidden');
     $('#end-page').addClass('hidden');
     $('#directions-page').addClass('hidden');
-    $('#gameScreen').removeClass('hidden');
+    $('#courseScreen').removeClass('hidden');
     $('#playerScore').text(0);
     addHeart();
     addHeart();
@@ -383,7 +383,7 @@ function restartTimer() {
 // Function used to end the game and change screen
 function endGame() {
     // Close down game screen, also set hearts back and open endgame
-    $('#gameScreen').addClass('hidden');
+    $('#courseScreen').addClass('hidden');
     $('#heart1').removeClass('removed');
     $('#heart2').removeClass('removed');
     $('#heart3').removeClass('removed');
