@@ -1,34 +1,59 @@
 //!Goal 1: Show the array of courses on screen!
 //!Goal 2: Add a course to the array of courses!
 //!Goal 3: Click a course to increase their age by one year
-let firebaseRef = firebase.database().ref('active-exams');
+//var firebase = require('firebase/app');
 
-let clickHandler = function(course, courseKey){
+var firebaseConfig = {
+    apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
+    authDomain: "moodle-92a91.firebaseapp.com",
+    databaseURL: "https://moodle-92a91.firebaseio.com",
+    projectId: "moodle-92a91",
+    storageBucket: "moodle-92a91.appspot.com",
+    messagingSenderId: "108875363124",
+    appId: "1:108875363124:web:78afb905166d42c89dab61"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+let firebaseRef = firebase.database();
+
+/*let startExam = function (){
+    $("#start-page").hide();
+}*/
+
+let clickHandler = function() {
+  console.log("switching screens");
+  $('#start-page').toggle();
+  $('#courseScreen').toggle();
+}
+
+/*let clickHandler = function(course, courseKey){
   let courseRef = firebaseRef.child(courseKey).child('exam');
   courseRef.remove(course.exam);
-};
+};*/
 
 let callback = function(snapshot){
   $("#activeExams").html('');
   let data = snapshot.val();
-  Object.keys(data).map(
+  Object.keys(data).reverse().map(
     courseKey => {
       let course = data[courseKey];
-      let $li = $(`<li>
-<span>${course.exam} in ${course.courseNumber} is active</span>
-</li>`);
-      $li.on('click', clickHandler.bind(this, course, courseKey));
-      $("#activeExams").append($li);
+      if(course.courseNumber) {
+        let $li = $(`<li><span>${course.courseNumber} ${course.exam} is active</span></li>`);
+        let $button = $(`<button onclick="endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')">End Exam</button>`);
+        $button.on('click', endExam.bind(this, courseKey, course.courseNumber, course.exam));
+        $("#activeExams").append($li).append($button);
+      }
     }
   );
 };
 
-firebaseRef.on('value', callback);
+firebaseRef.ref('active-exams').on('value', callback);
 
-$("#createnewcourse").on('click', evt=>{
+let createExam = function() {
   let courseNumber = $("#coursenumber").val();
   let exam = $("#examname").val();
-  let newfirebaseRef = firebaseRef.push();
+  let newfirebaseRef = firebaseRef.ref('active-exams').push();
   newfirebaseRef.set({
     courseNumber, exam
   }).then(
@@ -38,5 +63,24 @@ $("#createnewcourse").on('click', evt=>{
       $("#examname").val('');
     }
   );
+  clickHandler();
   console.log("the past");
-});
+}
+
+let endExam = function(courseKey, courseNumber, exam) {
+  console.log("deleting " + exam + " for " + courseNumber + " " + courseKey);
+  let newfirebaseRef = firebaseRef.ref('past-exams').push();
+  newfirebaseRef.set({
+    courseNumber, exam
+  }).then(
+    function(){
+      let courseRef = firebaseRef.ref('active-exams').child(courseKey);
+      courseRef.remove();
+      console.log("removed " + courseNumber + " " + exam);
+      $("#coursenumber").val('');
+      $("#examname").val('');
+    }
+  );
+  console.log("the past");
+
+}
