@@ -1,41 +1,41 @@
-//!Goal 1: Show the array of students on screen!
-//!Goal 2: Add a Student to the array of students!
-//!Goal 3: Click a Student to increase their age by one year
-let examRef = firebase.database().ref('active-exams');
+//!Goal 1: Show the array of courses on screen!
+//!Goal 2: Add a course to the array of courses!
+//!Goal 3: Click a course to increase their age by one year
+let firebaseRef = firebase.database().ref('active-exams');
 
-let clickHandler = function(student, studentKey){
-  let ageRef = studentRef.child(studentKey).child('age');
-  ageRef.remove(parseInt(student.age) + 1);
+let clickHandler = function(course, courseKey){
+  let courseRef = firebaseRef.child(courseKey).child('exam');
+  courseRef.remove(course.exam);
 };
 
 let callback = function(snapshot){
-  $("#nameshere").html('');
+  $("#activeExams").html('');
   let data = snapshot.val();
   Object.keys(data).map(
-    studentkey => {
-      let student = data[studentkey];
+    courseKey => {
+      let course = data[courseKey];
       let $li = $(`<li>
-<span>${student.name} is ${student.age} years old.</span>
+<span>${course.exam} in ${course.courseNumber} is active</span>
 </li>`);
-      $li.on('click', clickHandler.bind(this, student, studentkey));
-      $("#nameshere").append($li);
+      $li.on('click', clickHandler.bind(this, course, courseKey));
+      $("#activeExams").append($li);
     }
   );
 };
 
-studentRef.on('value', callback);
+firebaseRef.on('value', callback);
 
-$("#createnewstudent").on('click', evt=>{
-  let name = $("#studentname").val();
-  let age = parseInt($("#studentage").val());
-  let newStudentRef = studentRef.push();
-  newStudentRef.set({
-    name, age
+$("#createnewcourse").on('click', evt=>{
+  let courseNumber = $("#coursenumber").val();
+  let exam = $("#examname").val();
+  let newfirebaseRef = firebaseRef.push();
+  newfirebaseRef.set({
+    courseNumber, exam
   }).then(
     function(){
       console.log("the future");
-      $("#studentname").val('');
-      $("#studentage").val('');
+      $("#coursenumber").val('');
+      $("#examname").val('');
     }
   );
   console.log("the past");
