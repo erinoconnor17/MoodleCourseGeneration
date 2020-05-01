@@ -5,16 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Moodle Exam Generator</title>
-    <link rel="icon" href="style/images/squirrel.png">
     <link rel="stylesheet" href="style/styles.css">
-    <script type="text/javascript" src="scripts/index.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
-        <script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
           apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
@@ -27,19 +22,31 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-      </script>
+    </script>-->
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=B612' rel='stylesheet'>
 
 </head>
 
 <body>
     <!-- Home page -->
-    <div class="container-fluid" id="start-page">
+    <div class="container-fluid">
+    <div id="start-page">
         <h1 class="jumbotron text-center title-text">Moodle Exam Generator</h1>
+        <div class="start-page-body"></div>
         <div class="text-center start-exam">
-            <button onclick="startExam()" type="button" class="btn btn-info btn-lg">Start Exam</button>
+            <button onclick="clickHandler()" type="button" class="btn btn-info btn-lg">New Exam</button>
         </div>
+        <h3>Active Exams:</h3>
+            <ul id="activeExams">
+            </ul>
         <br />
         <br />
+    </div>
     </div>
 
     <div class="container-fluid">
@@ -49,11 +56,18 @@
             <div class="row" id="infoBar">
                 <div class="col" id="buttonContainer">
                     <div class="text-center back-button">
-                        <button onclick="titleScreen()" type="button" class="btn btn-info btn-lg">Home</button>
+                        <button onclick="clickHandler()" type="button" class="btn btn-info btn-lg">Home</button>
                     </div>
-                    <div class="text-center smaller-title-text">
+                    <div class="text-center title-text">
                         Starting An Exam
                     </div>
+                    <label for="coursenumber"> Course Number:
+                        <input type="text" id="coursenumber" placeholder="Format CISCXXX"/>
+                    </label>
+                    <label for="examname"> Exam Name: 
+                        <input type="text" id="examname" placeholder="Exam Name Here"/>
+                    </label>
+                    <button onclick="createExam()" type="button" class="btn btn-info btn-lg">Create Exam</button>
                 </div>
             </div>
             <div class="row" id="footer">
