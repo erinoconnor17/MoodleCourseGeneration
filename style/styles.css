@@ -43,7 +43,7 @@ body{
 
 #titleText{
     position: absolute;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
 }
 
 
@@ -55,26 +55,26 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
     font-size:3.5rem;
 }
 .smaller-title-text{
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
     font-size:2.5rem;
     position: center;
 }
 .start-page{
     margin-bottom: 6.63129973474801vh;
     margin-top: 46.41909814323608vh;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
 }
 .back-button{
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
     padding: 15px 0;
     position: absolute;
 }
 .submit-button{
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
     width: 50%;
     position: absolute;
     bottom: 0;
@@ -90,7 +90,7 @@ body{
     min-height: 100%;
     height:auto !important;
     height: 100%; 
-    font-family: 'Muli', sans-serif;
+    font-family: 'Muli';
     padding: 15px 0;
     position: absolute;
 }
@@ -108,7 +108,7 @@ body{
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'Muli';
 	font-size:17px;
 	padding:7px 25px;
 	text-decoration:none;
@@ -131,7 +131,7 @@ body{
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	font-family: 'Muli';
 	font-size:17px;
 	padding:7px 25px;
 	text-decoration:none;
