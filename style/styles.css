@@ -1,10 +1,10 @@
-tml, body{
+body{
     height: 100%;
 }
 
 #infoBar{
     height: 15vh;
-    background-color: rgb(150, 97, 0);
+    background-color:gray;
     
 }
 
@@ -20,192 +20,57 @@ tml, body{
     overflow: hidden;
 }
 
-#squirrel {
+#buttonContainer{
+    background-color: lightblue;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue;
+}
+
+
+#titleText{
     position: absolute;
-    width: auto;
-    height: auto; 
-    z-index: 10;
-    /*left: 1200px;*/
-    left: 78vw;
-    /*top: 500px;*/
-    top:66vh;
-}
-#playerScoreTitle{
-    font-family: 'Luckiest Guy', sans-serif;
-    font-size: 25px;
-    color: darkslategray;
-    position: absolute;
-    /*left: 90px;
-    top: 50px;*/
-    left:5.859375vw;
-    top: 6.63129973474801vh;
-}
-#playerScore {
-    font-family: 'Luckiest Guy', sans-serif;
-    font-size: 25px;
-    color: darkslategray;
-    position: relative;
-}
-#customize{
-    font-family: 'Luckiest Guy', sans-serif;
-    font-size: 25px;
-    position: absolute;
-    /*left: 100px;
-    top: 40px;*/
-    left: 6.510416666666667vw;
-    top: 5.305039787798409vh;
-}
-#bg
-{
-    position: relative;
-    background: #00fdff url(images/clouds.jpg);
-    background-repeat: repeat-y;
-    height: 1000%;
-    background-position: center center;
-    animation: animate-sky 15s linear infinite;
-    z-index: -1;
-    background-size: 800px;
-    margin-top:-100%;
-}
-.left-obj {
-    position: absolute;
-    /*left: 370px;*/
-    left: 24.088541666666668vw;
-    top: 0px;
-    z-index: 8;
-}
-.right-obj {
-    position: absolute;
-    /*right: 370px;*/
-    right: 24.088541666666668vw;
-    top: 0px;
-    z-index: 8;
+    font-family: 'Muli', sans-serif;
 }
 
-#tree {
-    position: relative;
-    background: brown url(images/bark.png);
-    height: 600%;
-    background-position: 0 0;
-    background-repeat: repeat-y;
-    animation: animate-tree 4s linear infinite;
-    z-index: -1;
-    margin-top:-200%;
-}
-
-@keyframes animate-sky
-{
-    0% {
-        transform: translate3d(0,0,0);
-      }
-    100% {
-        transform: translate3d(0,1421px,0);
-    }
-}
-@keyframes animate-tree
-{
-    0% {
-        transform: translate3d(0,0,0);
-      }
-    100% {
-        transform: translate3d(0,2033px,0);
-    }
-}
-
-
-
-
-
-#scoreContainer{
-background-color: lightblue;
-}
-
-#playerScore {
-    position: absolute;
-    /*left: 200px;*/
-    left: 13.020833333333334vw;
-    /*top: 67px;*/
-    top: 8.885941644562335vh;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-#timer{
-    font-family: 'Luckiest Guy', sans-serif;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
 
 .hidden{
     display:none;
 }
 
-#playerHealth {
-    background-color: red;
-}
-
-#heart {
-    display: inline-block;
-}
-
-#heart img {
-    width: auto;
-    height: auto;
-    max-width: 20vw;
-    max-height: 10vh;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-}
-#gameTimer {
-    font-family: 'Luckiest Guy', sans-serif;
-    background-color: green;
-    text-align: center;
-    padding: 10px 0;
-}
 .jumbotron{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-size:3.5rem;
 }
-.start-game{
-    /*margin-bottom: 50px;
-    margin-top: 350px;*/
+.smaller-title-text{
+    font-family: 'Muli', sans-serif;
+    font-size:2.5rem;
+    position: center;
+}
+.start-page{
     margin-bottom: 6.63129973474801vh;
     margin-top: 46.41909814323608vh;
-    font-family: 'Luckiest Guy', sans-serif;
-}
-.how-to-play{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli', sans-serif;
 }
 .back-button{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli', sans-serif;
     padding: 15px 0;
     position: absolute;
 }
-.custom-button{
-    font-family: 'Luckiest Guy', sans-serif;
-    padding: 15px 130px;
+.submit-button{
+    font-family: 'Muli', sans-serif;
+    width: 50%;
     position: absolute;
+    bottom: 0;
 }
 
-#healthHolder {
-    height: 100%;
-}
-
-#directions-page{
-    background-image: url('images/UDGreen.jpg');
-    background-repeat:round;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
 #start-page{
     background-image: url('images/UDMemHall.jpg');
     background-repeat:round;
@@ -216,28 +81,11 @@ background-color: lightblue;
     min-height: 100%;
     height:auto !important;
     height: 100%; 
+    font-family: 'Muli', sans-serif;
+    padding: 15px 0;
+    position: absolute;
 }
 
 .removed {
     filter: grayscale();
-}
-#end-page{
-    background-image: url('images/UDGreen.jpg');
-    background-repeat:round;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    min-height: 100%;
-    height:auto !important;
-    height: 100%; 
-}
-
-#endGameText {
-    display: inline-block;
-}
-
-#restartButton {
-    display: inline-block;
-    font-family: 'Luckiest Guy', sans-serif;
 }
