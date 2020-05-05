@@ -40,6 +40,10 @@ let callback = function(snapshot){
       let course = data[courseKey];
       if(course.courseNumber) {
         let $li = $(`<li><span>${course.courseNumber} ${course.exam} is active</span></li>`);
+        if(course.examminutes){
+          let $min = $(`<br><span>Time Limit: ${course.examminutes} minutes</span>`)
+          $li = $li.append($min);
+        }
         let $button = $(`<button onclick="endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')">End Exam</button>`);
         $button.on('click', endExam.bind(this, courseKey, course.courseNumber, course.exam));
         $("#activeExams").append($li).append($button);
@@ -53,25 +57,27 @@ firebaseRef.ref('active-exams').on('value', callback);
 let createExam = function() {
   let courseNumber = $("#coursenumber").val();
   let exam = $("#examname").val();
+  let examminutes = $("#examminutes").val();
   let newfirebaseRef = firebaseRef.ref('active-exams').push();
   newfirebaseRef.set({
-    courseNumber, exam
+    courseNumber, exam, examminutes
   }).then(
     function(){
       console.log("the future");
       $("#coursenumber").val('');
       $("#examname").val('');
+      $("#examminutes").val();
     }
   );
   clickHandler();
   console.log("the past");
 }
 
-let endExam = function(courseKey, courseNumber, exam) {
+let endExam = function(courseKey, courseNumber, exam, examminutes) {
   console.log("deleting " + exam + " for " + courseNumber + " " + courseKey);
   let newfirebaseRef = firebaseRef.ref('past-exams').push();
   newfirebaseRef.set({
-    courseNumber, exam
+    courseNumber, exam, examminutes
   }).then(
     function(){
       let courseRef = firebaseRef.ref('active-exams').child(courseKey);
@@ -79,6 +85,7 @@ let endExam = function(courseKey, courseNumber, exam) {
       console.log("removed " + courseNumber + " " + exam);
       $("#coursenumber").val('');
       $("#examname").val('');
+      $("#examminutes").val('');
     }
   );
   console.log("the past");
@@ -88,7 +95,7 @@ let endExam = function(courseKey, courseNumber, exam) {
 function timeLimit() {
   // Get the checkbox
   var checkBox = document.getElementById("time");
-  var text = document.getElementById("examminutes");
+  var text = document.getElementById("timelimit");
 
   // If the checkbox is checked, display the output text
   if (checkBox.checked == true){
