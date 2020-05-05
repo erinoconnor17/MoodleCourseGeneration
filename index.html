@@ -29,6 +29,8 @@
     <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=B612' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -36,18 +38,23 @@
     <!-- Home page -->
     <div class="container-fluid">
     <div id="start-page">
-        <h1 class="jumbotron text-center title-text">Moodle Exam Generator</h1>
+        <header>
+        <h1>Moodle Course Generator</h1>
+        </header>
+        <main>
         <div class="start-page-body"></div>
         <div class="text-center start-exam">
             <button onclick="clickHandler()" type="button" class="myButton">New Exam</button>
-        </div>
-        <h3>Active Exams:</h3>
+        
+        <h3><b>Active Exams:</b></h3>
             <ul id="activeExams">
             </ul>
         <br />
         <br />
     </div>
     </div>
+    </div>
+</main>
 
     <div class="container-fluid">
         <!-- Add course page -->
