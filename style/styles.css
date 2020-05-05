@@ -33,7 +33,8 @@ body{
 
 #inputContainer{
     background-color: lightgrey;
-    font-size: large;
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
 }
 
 #footer {
@@ -83,7 +84,8 @@ body{
     bottom: 0;
 }
 .start-exam{
-    font-size: large;
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
 }
 #start-page{
     background-repeat:round;
@@ -160,7 +162,7 @@ body{
 }
 
 body {
-	font-family: "Roboto", Arial, sans-serif;
+	font-family: 'Muli';
 	min-height: 100vh;
 	background-color: #101010;
 }
