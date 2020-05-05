@@ -78,6 +78,11 @@
     <label for="examname"> Exam Name: 
         <input type="text" id="examname" placeholder="Exam Name Here"/>
     </label>
+    <input type="checkbox" id="time" name="timedexam" value="minutes" onclick="timeLimit()">
+    <label for="vehicle1"> There is a <b>time limit</b> for this exam</label><br>
+    <label for="examminutes" id="examminutes" style="display:none"> Exam Time: 
+        <input type="text" id="examminutes" placeholder="Time In Minutes"/>
+    </label>
     <button onclick="createExam()" type="button" class="myButton">Create Exam</button>
     <div class="row" id="footer">
         <div class="col" id="buttonContainer">
