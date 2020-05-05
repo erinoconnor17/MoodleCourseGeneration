@@ -88,13 +88,13 @@ let endExam = function(courseKey, courseNumber, exam) {
 function timeLimit() {
   // Get the checkbox
   var checkBox = document.getElementById("time");
-  // Get the output text
-  var text = document.getElementById("text");
+  var text = document.getElementById("examminutes");
 
   // If the checkbox is checked, display the output text
   if (checkBox.checked == true){
     text.style.display = "block";
-  } else {
+  }
+  else {
     text.style.display = "none";
   }
 }
