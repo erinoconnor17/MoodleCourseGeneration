@@ -26,12 +26,15 @@ body{
 }
 
 #buttonContainer{
-    background-color: lightblue;
+	background-color: midnightblue;
+	color: white;
+	font-family: 'Raleway', sans-serif;
 }
 
 #inputContainer{
     background-color: lightgrey;
-    font-size: large;
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
 }
 
 #footer {
@@ -44,7 +47,7 @@ body{
 
 #titleText{
     position: absolute;
-    font-family: 'Muli';
+    font-family: 'Raleway', sans-serif;
 }
 
 
@@ -56,7 +59,8 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Muli';
+	font-family: 'Raleway', sans-serif;
+	margin-top: 15px;
     font-size:3.5rem;
 }
 .smaller-title-text{
@@ -81,7 +85,8 @@ body{
     bottom: 0;
 }
 .start-exam{
-    font-size: large;
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
 }
 #start-page{
     background-repeat:round;
@@ -158,7 +163,7 @@ body{
 }
 
 body {
-	font-family: "Roboto", Arial, sans-serif;
+	font-family: 'Muli';
 	min-height: 100vh;
 	background-color: #101010;
 }
@@ -195,6 +200,7 @@ h1 {
 	padding: 10rem 0 0 4.5rem;
 	text-shadow: .022em .022em .022em #111;
 	color: #fff;
+	font-family: 'Raleway', sans-serif;
 }
 
 main {
