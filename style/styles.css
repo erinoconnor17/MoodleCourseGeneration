@@ -59,7 +59,8 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
+	margin-top: 15px;
     font-size:3.5rem;
 }
 .smaller-title-text{
