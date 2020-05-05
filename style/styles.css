@@ -4,7 +4,7 @@ body{
 
 #infoBar{
     height: 15vh;
-    background-color: rgb(150, 97, 0);
+    background-color:gray;
     
 }
 
@@ -14,14 +14,36 @@ body{
     z-index:9;
 }
 
+#inputBar{
+    padding-top: 40px;
+    background-color: lightgrey;
+}
+
 #game 
 {
     height:85vh;
     overflow: hidden;
 }
 
-#scoreContainer{
-background-color: lightblue;
+#buttonContainer{
+    background-color: lightblue;
+}
+
+#inputContainer{
+    background-color: lightgrey;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue;
+}
+
+
+#titleText{
+    position: absolute;
+    font-family: 'Muli';
 }
 
 
@@ -33,23 +55,29 @@ background-color: lightblue;
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli';
     font-size:3.5rem;
+}
+.smaller-title-text{
+    font-family: 'Muli';
+    font-size:2.5rem;
+    position: center;
 }
 .start-page{
     margin-bottom: 6.63129973474801vh;
     margin-top: 46.41909814323608vh;
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli';
 }
 .back-button{
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli';
     padding: 15px 0;
     position: absolute;
 }
-.custom-button{
-    font-family: 'Luckiest Guy', sans-serif;
-    padding: 15px 130px;
+.submit-button{
+    font-family: 'Muli';
+    width: 50%;
     position: absolute;
+    bottom: 0;
 }
 
 #start-page{
@@ -62,7 +90,7 @@ background-color: lightblue;
     min-height: 100%;
     height:auto !important;
     height: 100%; 
-    font-family: 'Luckiest Guy', sans-serif;
+    font-family: 'Muli';
     padding: 15px 0;
     position: absolute;
 }
@@ -70,21 +98,50 @@ background-color: lightblue;
 .removed {
     filter: grayscale();
 }
-#custom-button{
-    padding: 10px;
-    color: white;
-    background-color: #009578;
-    border: 1px solid #000;
-    border-radius: 5px;
-    cursor:point;
-}
 
-#custom-button:hover{
-    background-color: #00b28f;
+.myButton {
+	box-shadow: 3px 4px 0px 0px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:15px;
+	border:1px solid #29668f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Muli';
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
 }
-
-#custom-text{
-    margin-left: 10px;
-    font-family: sans-serif;
-    color: #aaa;
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
 }
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.submitButton {
+	box-shadow: 3px 4px 0px 0px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:15px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Muli';
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+}
+	.submitButton:hover {
+	background-color:#72b352;
+}
+ .submitButton:active {
+	position:relative;
+	top:1px;
+}
+        
