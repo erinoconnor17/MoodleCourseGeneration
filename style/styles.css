@@ -26,7 +26,9 @@ body{
 }
 
 #buttonContainer{
-    background-color: lightblue;
+	background-color: midnightblue;
+	color: white;
+	font-family: 'Raleway', sans-serif;
 }
 
 #inputContainer{
@@ -44,7 +46,7 @@ body{
 
 #titleText{
     position: absolute;
-    font-family: 'Muli';
+    font-family: 'Raleway', sans-serif;
 }
 
 
@@ -56,7 +58,7 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Muli';
+    font-family: 'Raleway', sans-serif;
     font-size:3.5rem;
 }
 .smaller-title-text{
@@ -195,6 +197,7 @@ h1 {
 	padding: 10rem 0 0 4.5rem;
 	text-shadow: .022em .022em .022em #111;
 	color: #fff;
+	font-family: 'Raleway', sans-serif;
 }
 
 main {
