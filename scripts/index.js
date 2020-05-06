@@ -2,8 +2,11 @@
 //!Goal 2: Add a course to the array of courses!
 //!Goal 3: Click a course to increase their age by one year
 //var firebase = require('firebase/app');
+import 'firebase/storage';
 
 //64.225.15.171:2020/create?course=ciscTEST&exam=exam2&port=8000
+
+//last error: TypeError: firebase.storage is not a function
 
 var firebaseConfig = {
     apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
@@ -64,10 +67,18 @@ let callback = function(snapshot){
 
 firebaseRef.ref('active-exams').on('value', callback);
 
-let createExam = function() {
+let createExam = function(event) {
   let courseNumber = $("#coursenumber").val();
   let exam = $("#examname").val();
   let examminutes = $("#examminutes").val();
+
+  /*let file = new File($("#myFile")[0].files[0], 'examFile');
+  ref.put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+  });
+  let ref = file.name;*/
+  handleFileSelect();
+  
   let newfirebaseRef = firebaseRef.ref('active-exams').push();
   newfirebaseRef.set({
     courseNumber, exam, examminutes
@@ -76,11 +87,73 @@ let createExam = function() {
       console.log("the future");
       $("#coursenumber").val('');
       $("#examname").val('');
-      $("#examminutes").val();
+      $("#examminutes").val('');
+      $("#myFile").val('');
     }
   );
   clickHandler();
   console.log("the past");
+}
+
+function handleFileSelect()
+      {               
+        if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+          alert('The File APIs are not fully supported in this browser.');
+          return;
+        }   
+
+        var input = document.getElementById('myFile');
+        if (!input) {
+          alert("Um, couldn't find the fileinput element.");
+        }
+        else if (!input.files) {
+          alert("This browser doesn't seem to support the `files` property of file inputs.");
+        }
+        else if (!input.files[0]) {
+          alert("Please select a file before clicking 'Load'");               
+        }
+        else {
+          var file = input.files[0];
+          var fr = new FileReader();
+          //fr.onload = receivedText;
+          //fr.readAsText(file);
+          fr.readAsBinaryString(file); //as bit work with base64 for example upload to server
+          //fr.readAsDataURL(file);
+          var storageRef = firebaseRef.storage().ref().child(file.name);
+          var task = storageRef.put(file);
+          console.log("end of handleFileSelect");
+        }
+      }
+
+      function receivedText() {
+        document.getElementById('editor').appendChild(document.createTextNode(fr.result));
+      }           
+
+handleChange = (event) => {
+  var file = event.target.files[0];
+  var storageRef = firebase.storage().ref().child(file.name);
+  var task = storageRef.put(file);
+  //var that = this;
+
+  //let file = new File($("#myFile").val(), 'examFile');
+  /*ref.put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+  });
+  let ref = file.name;*/
+
+
+  task.on('state_changed',
+    /*function progress(snapshot) {
+          var percentage=(snapshot.bytesTransferred/snapshot.totalBytes) *100;
+          that.showProgress(percentage);
+      },*/
+    function error(err){
+
+      },
+    function complete() {
+      console.log("uploaded " + file.name);
+    }
+  );
 }
 
 let endExam = function(courseKey, courseNumber, exam, examminutes) {
