@@ -3,6 +3,8 @@
 //!Goal 3: Click a course to increase their age by one year
 //var firebase = require('firebase/app');
 
+//64.225.15.171:2020/create?course=ciscTEST&exam=exam2&port=8000
+
 var firebaseConfig = {
     apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
     authDomain: "moodle-92a91.firebaseapp.com",
@@ -16,6 +18,14 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
 let firebaseRef = firebase.database();
+
+/*service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}*/
 
 /*let startExam = function (){
     $("#start-page").hide();
