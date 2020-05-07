@@ -3,6 +3,7 @@ const express = require('express');
 const fileupload = require('express-fileupload');
 const fs = require('fs');
 const shell = require('shelljs');
+const path = require ('path');
 
 const app = express()
 app.use (fileupload());
@@ -61,8 +62,7 @@ let makeSession = (name, port) => {
 				}});
 		})
 		.then( (container) => {
-			container.start();
-			return container.inspect( (data) => {return data; }); 
+			return container.start();
 
 		})
 		.catch( (e) => console.log(e));
@@ -101,13 +101,14 @@ app.get('/create', (req, res) => {
 	let message;
 
 	if (!name || !exam || !port) {
-		message = "missing query parameters";
+		res.send("missing query parameters");
+		return;
 	}
 	else {
 		let id = `${name}_${exam}`;
-		message =  makeSession(id, port);
+		makeSession(id, port)
+		.then ( data => res.send(data)); 
 	}
-	res.send(message);
 });
 
 app.get('/delete', (req, res) => {
@@ -117,14 +118,14 @@ app.get('/delete', (req, res) => {
 	let message;
 
 	if (!name || !exam || !port) {
-		message = "exam does not exist";
+		res.send("exam does not exist");
+		return;
 	}
 	else {
 		let id = `${name}_${exam}`;
-		deleteSession(id,port);
-		message = "success .. probably";
+		deleteSession(id,port)
+		.then( (data) => res.send("Success"));
 	}
-	res.send(message);
 });
 
 app.post('/uploadCourse', (req, res) => {
@@ -148,5 +149,8 @@ app.post('/uploadCourse', (req, res) => {
 		res.send("Probably uploaded");
 	});
 });
+
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.listen(2020, () => console.log("Listening"));
