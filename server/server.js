@@ -1,12 +1,14 @@
 const Docker = require('dockerode');
 const express = require('express');
+const fileupload = require('express-fileupload');
+const fs = require('fs');
+const shell = require('shelljs');
 
 const app = express()
+app.use (fileupload());
 const docker = new Docker({socketPath: '/var/run/docker.sock'});
 
 const root_path = "/home/chenstev/root/";
-
-
 
 let parse_container = (c) => {
 	let name = c.Names[0];
@@ -124,4 +126,27 @@ app.get('/delete', (req, res) => {
 	}
 	res.send(message);
 });
+
+app.post('/uploadCourse', (req, res) => {
+	let course = req.files.course;
+	let name = req.query.course;
+	let exam = req.query.exam;
+	let port = req.query.port;
+	let path = `${root_path}${name}_${exam}/course/`;
+	
+	// this is apparently known not to work... i hate javascript
+	//fs.mkdirSync(path, {recursive: true});
+	
+	shell.mkdir('-p', path);
+
+	course.mv(path+'backup.mbz', (error) => {
+		if (error) {
+			console.log(error);
+			res.send("Failed to upload");
+			return;
+		}
+		res.send("Probably uploaded");
+	});
+});
+
 app.listen(2020, () => console.log("Listening"));
