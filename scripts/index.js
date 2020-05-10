@@ -44,7 +44,7 @@ let callback = function(snapshot){
           let $min = $(`<br><span>Time Limit: ${course.examminutes} minutes</span>`)
           $li = $li.append($min);
         }
-        let $button = $(`<type="button" class="myButton" onclick="endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')">End Exam</button><br>`);
+        let $button = $(`<type="button" class="endButton" onclick="endMessage()";"endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')";>End Exam</button><br>`);
         $button.on('click', endExam.bind(this, courseKey, course.courseNumber, course.exam));
         $("#activeExams").append($li).append($button);
       }
@@ -93,7 +93,13 @@ let endExam = function(courseKey, courseNumber, exam, examminutes) {
 }
 
 function endMessage(){
-  window.alert("You are deleting this!");
+  if (confirm('Are you sure you want to delete?')) {
+    // Save it!
+    console.log('Thing was saved to the database.');
+  } else {
+    // Do nothing!
+    console.log('Thing was not saved to the database.');
+  }
 }
 
 function timeLimit() {
