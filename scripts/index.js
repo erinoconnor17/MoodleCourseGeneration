@@ -39,12 +39,12 @@ let callback = function(snapshot){
     courseKey => {
       let course = data[courseKey];
       if(course.courseNumber) {
-        let $li = $(`<li><span>${course.courseNumber} ${course.exam} is active</span></li>`);
+        let $li = $(`<li><span><b>${course.courseNumber} ${course.exam}</b> is active</span></li>`);
         if(course.examminutes){
           let $min = $(`<br><span>Time Limit: ${course.examminutes} minutes</span>`)
           $li = $li.append($min);
         }
-        let $button = $(`<button onclick="endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')">End Exam</button>`);
+        let $button = $(`<type="button" class="myButton" onclick="endExam('${courseKey}', '${course.courseNumber}', '${course.exam}')">End Exam</button><br>`);
         $button.on('click', endExam.bind(this, courseKey, course.courseNumber, course.exam));
         $("#activeExams").append($li).append($button);
       }
@@ -90,6 +90,10 @@ let endExam = function(courseKey, courseNumber, exam, examminutes) {
   );
   console.log("the past");
 
+}
+
+function endMessage(){
+  window.alert("You are deleting this!");
 }
 
 function timeLimit() {
