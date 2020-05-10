@@ -6,15 +6,6 @@
 
 // fyi posting api keys to a public github repo is not good
 // read them from a config.js file in you're .gitignore in the future
-var firebaseConfig = {
-    apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
-    authDomain: "moodle-92a91.firebaseapp.com",
-    databaseURL: "https://moodle-92a91.firebaseio.com",
-    projectId: "moodle-92a91",
-    storageBucket: "moodle-92a91.appspot.com",
-    messagingSenderId: "108875363124",
-    appId: "1:108875363124:web:78afb905166d42c89dab61"
-};
 
 let clickHandler = function() {
 	console.log("switching screens");
@@ -41,10 +32,24 @@ let showActiveExams = function(){
 	});
 };
 
+let uploadFile = function(course, exam, port) {
+	let file = document.getElementById('myFile').files[0];
+	let formData = new FormData();
+	formData.append('course', file);
+	const url = `http://64.225.15.171:2020/uploadCourse?course=${course}&exam=${exam}&port=${port}`;
+	fetch (url, {
+		method: 'POST',
+		body: formData})
+	.then ( res => res.text())
+}
+
+
 let createExam = function() {
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
+
+	uploadFile(course,exam,port);
 	const url = `http://64.225.15.171:2020/create?course=${course}&exam=${exam}&port=${port}`;
 	fetch (url, {method: 'GET'})
 	.then ( res => res.text())

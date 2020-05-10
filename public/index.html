@@ -44,7 +44,7 @@
         <main>
         <div class="start-page-body"></div>
         <div class="text-center start-exam">
-            <button onclick="clickHandler()" type="button" class="myButton">New Exam</button>
+            <button onclick="clickHandler()" type="button" class="myButton">Create Exam</button>
         
         <h3><b>Active Exams:</b></h3>
             <ul id="activeExams">
@@ -81,12 +81,16 @@
     <label for="portnumber"> Port Number: 
         <input type="number" id="portnumber" placeholder="8001"/>
     </label>
-    
+
     <input type="checkbox" id="time" name="timedexam" value="minutes" onclick="timeLimit()">
     <label for="vehicle1"> There is a <b>time limit</b> for this exam</label><br>
-    <label for="examminutes" id="examminutes" style="display:none"> Exam Time: 
+    <label for="examminutes" id="timelimit" style="display:none"> Exam Time: 
         <input type="text" id="examminutes" placeholder="Time In Minutes"/>
     </label>
+    <label for="coursezip"> Moodle Course: 
+        <input type="file" id="myFile" name="filename" accept=".mbz">
+    </label>
+    <br><br>
     <button onclick="createExam()" type="button" class="myButton">Create Exam</button>
     <div class="row" id="footer">
         <div class="col" id="buttonContainer">
