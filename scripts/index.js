@@ -2,7 +2,7 @@
 //!Goal 2: Add a course to the array of courses!
 //!Goal 3: Click a course to increase their age by one year
 //var firebase = require('firebase/app');
-import 'firebase/storage';
+//import 'firebase/storage';
 
 //64.225.15.171:2020/create?course=ciscTEST&exam=exam2&port=8000
 
@@ -88,7 +88,7 @@ let createExam = function(event) {
       $("#coursenumber").val('');
       $("#examname").val('');
       $("#examminutes").val('');
-      $("#myFile").val('');
+      //$("#myFile").val('');
     }
   );
   clickHandler();
