@@ -32,7 +32,11 @@ let showActiveExams = function(){
 	});
 };
 
-let uploadFile = function(course, exam, port) {
+let uploadFile = function() {
+	let course = $("#coursenumber").val();
+	let exam = $("#examname").val();
+	let port = $('#portnumber').val();
+	
 	let file = document.getElementById('myFile').files[0];
 	let formData = new FormData();
 	formData.append('course', file);
@@ -41,6 +45,7 @@ let uploadFile = function(course, exam, port) {
 		method: 'POST',
 		body: formData})
 	.then ( res => res.text())
+	.then ( () => console.log("uploaded?"));
 }
 
 
@@ -49,7 +54,6 @@ let createExam = function() {
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
 
-	uploadFile(course,exam,port);
 	const url = `http://64.225.15.171:2020/create?course=${course}&exam=${exam}&port=${port}`;
 	fetch (url, {method: 'GET'})
 	.then ( res => res.text())
