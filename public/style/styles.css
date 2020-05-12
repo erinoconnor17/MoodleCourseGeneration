@@ -157,6 +157,28 @@ body{
 	position:relative;
 	top:1px;
 }
+.endButton {
+	box-shadow: 3px 4px 0px 0px #732727;
+	background:linear-gradient(to bottom, #b55a5a 5%, #b35252 100%);
+	background-color:#b55a5a;
+	border-radius:15px;
+	border:1px solid #8f2929;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Muli';
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #8a3c3c;
+}
+	.endButton:hover {
+	background-color:#72b352;
+}
+ .endButton:active {
+	position:relative;
+	top:1px;
+}
 
 :root {
 	/* Base font size */

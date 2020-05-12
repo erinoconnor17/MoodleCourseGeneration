@@ -24,7 +24,7 @@ let showActiveExams = function(){
 	.then ( (containers) => {
 		containers.map ( data => {
 			let $li = $(`<li><span>${data.course} ${data.exam} is active</span></li>`);
-			let $button = $(`<button onclick="endExam('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
+			let $button = $(`<type="button" class="endButton" onclick="endExam('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
 			// I'm not sure why this was bound twice
 			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
 			$("#activeExams").append($li).append($button);
