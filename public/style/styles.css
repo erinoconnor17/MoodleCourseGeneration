@@ -4,13 +4,16 @@ body{
 
 #infoBar{
     height: 15vh;
-    background-color:gray;
+	background:
+	linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+	url(https://wallpaperplay.com/walls/full/a/0/f/177173.jpg) no-repeat center,
+	linear-gradient(#4e4376, #2b5876);
+	background-size:cover;
     
 }
 
 #infoBar > div {
     margin: 5px;
-    border: solid black 3px;
     z-index:9;
 }
 
@@ -26,11 +29,15 @@ body{
 }
 
 #buttonContainer{
-    background-color: lightblue;
+	background-image: midnightblue;
+	color: white;
+	font-family: 'Raleway', sans-serif;
 }
 
 #inputContainer{
     background-color: lightgrey;
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
 }
 
 #footer {
@@ -43,7 +50,7 @@ body{
 
 #titleText{
     position: absolute;
-    font-family: 'Muli';
+    font-family: 'Raleway', sans-serif;
 }
 
 
@@ -55,7 +62,8 @@ body{
     background-color:#e9ecef8c !important;
 }
 .title-text{
-    font-family: 'Muli';
+	font-family: 'Raleway', sans-serif;
+	margin-top: 15px;
     font-size:3.5rem;
 }
 .smaller-title-text{
@@ -71,7 +79,7 @@ body{
 .back-button{
     font-family: 'Muli';
     padding: 15px 0;
-    position: absolute;
+	position: absolute;
 }
 .submit-button{
     font-family: 'Muli';
@@ -79,9 +87,12 @@ body{
     position: absolute;
     bottom: 0;
 }
-
+.start-exam{
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
+	margin-left: 400px;
+}
 #start-page{
-    background-image: url('images/UDMemHall.jpg');
     background-repeat:round;
     background-size: cover;
     -webkit-background-size: cover;
@@ -110,7 +121,9 @@ body{
 	color:#ffffff;
 	font-family: 'Muli';
 	font-size:17px;
-	padding:7px 25px;
+    padding:7px 25px;
+	margin-bottom: 10px;
+	margin-right: 300px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
 }
@@ -144,4 +157,64 @@ body{
 	position:relative;
 	top:1px;
 }
-        
+
+:root {
+	/* Base font size */
+	font-size: 10px;
+
+	/* Heading height variable*/
+	--heading-height: 30em;
+}
+
+body {
+	font-family: 'Muli';
+	min-height: 100vh;
+	background-color: #101010;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	height: var(--heading-height);
+}
+
+/* Create angled background with 'before' pseudo-element */
+header::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 6em;
+	width: 100%;
+	height: calc(var(--heading-height) + 10em);
+	z-index: -1;
+	transform: skewY(-3.5deg);
+	background: 
+		linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+		url(https://wallpaperplay.com/walls/full/a/0/f/177173.jpg) no-repeat center,
+		linear-gradient(#4e4376, #2b5876);
+	background-size: cover;
+	border-bottom: .2em solid #fff;
+}
+
+h1 {
+	font-size: calc(2.8em + 2.6vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	padding: 10rem 0 0 4.5rem;
+	text-shadow: .022em .022em .022em #111;
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+}
+
+main {
+	padding: calc(var(--heading-height) + 1.5vw) 4em 0;
+}
+
+p {
+	font-size: calc(2em + .25vw);
+	font-weight: 400;
+	line-height: 2;
+	margin-bottom: 1.5em;
+	color: #fcfcfc;
+}
