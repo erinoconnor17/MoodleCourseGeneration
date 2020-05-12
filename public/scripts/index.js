@@ -77,6 +77,15 @@ let endExam = function(course, exam, port) {
 	
 }
 
+// Checks if user wants to create exam
+function sendCreateMessage(){
+	var r = confirm("Are you sure you'd like to create this exam?");
+	if (r == true) {
+		  createExam();
+		  titleScreen();
+	} 
+}
+
 function timeLimit() {
 	// Get the checkbox
 	var checkBox = document.getElementById("time");
