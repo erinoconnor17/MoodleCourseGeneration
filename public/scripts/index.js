@@ -80,7 +80,7 @@ let endExam = function(course, exam, port) {
 function timeLimit() {
 	// Get the checkbox
 	var checkBox = document.getElementById("time");
-	var text = document.getElementById("examminutes");
+	var text = document.getElementById("timelimit");
 
 	// If the checkbox is checked, display the output text
 	if (checkBox.checked == true){
