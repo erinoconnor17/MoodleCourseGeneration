@@ -7,6 +7,13 @@ const path = require ('path');
 
 const app = express()
 app.use (fileupload());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 const docker = new Docker({socketPath: '/var/run/docker.sock'});
 
 const root_path = "/home/chenstev/root/";
