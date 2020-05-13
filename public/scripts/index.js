@@ -24,7 +24,7 @@ let showActiveExams = function(){
 	.then ( (containers) => {
 		containers.map ( data => {
 			let $li = $(`<li><span>${data.course} ${data.exam} is active</span></li>`);
-			let $button = $(`<type="button" class="endButton" onclick="endExam('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
+			let $button = $(`<type="button" class="endButton" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
 			// I'm not sure why this was bound twice
 			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
 			$("#activeExams").append($li).append($button);
@@ -83,6 +83,14 @@ function sendCreateMessage(){
 	if (r == true) {
 		  createExam();
 		  titleScreen();
+	} 
+}
+// Checks if user wants to end exam
+function sendEndMessage(course, exam, port){
+	
+	var r = confirm("Are you sure you'd like to end " + course + " " + exam + " listening on port " + port + "?");
+	if (r == true) {
+		endExam(course, exam, port)
 	} 
 }
 
