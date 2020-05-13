@@ -70,6 +70,31 @@
                     </div>
     </div>
     </div>
+
+    <div class="text-left Instructions">
+        <button type="button" class="myButton" id="instructions" data-toggle="modal" data-target="#exampleModalCenter">Instructions</button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="100" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <h1 class="text-center title-text">Instructions</h1>
+                        <p>To start an exam, fill out the course number; ignore the section number and use the format CISCXXX.</p>
+                        <p>Fill out the exam name (i.e. Midterm I, Final, Quiz) and the port number. The port number will specify the location of your Moodle course; you would use the url 64.225.15.171:[port number] to share the assessment with your students. </p>
+                        <p>If you would like the assignment to be timed, check the box and specify the duration in minutes. The timer will start once the course has been created.</p>
+                        <p>Next, upload the Moodle course which contains the assignment as a ZIP file.</p>
+                        <p>Finally, click the Create Exam button and your exam will be live once the Moodle course has been uploaded.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row" id="inputBar">
         <div class="col" id="inputContainer">
     <label for="coursenumber"> Course Number:
