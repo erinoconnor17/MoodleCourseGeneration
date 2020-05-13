@@ -1,8 +1,3 @@
-//!Goal 1: Show the array of courses on screen!
-//!Goal 2: Add a course to the array of courses!
-//!Goal 3: Click a course to increase their age by one year
-//var firebase = require('firebase/app');
-
 
 // fyi posting api keys to a public github repo is not good
 // read them from a config.js file in you're .gitignore in the future
@@ -24,7 +19,7 @@ let showActiveExams = function(){
 	.then ( (containers) => {
 		containers.map ( data => {
 			let $li = $(`<li><span>${data.course} ${data.exam} is active</span></li>`);
-			let $button = $(`<type="button" class="endButton" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
+			let $button = $(`<type="button" class="endButton" onclick="endExam('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
 			// I'm not sure why this was bound twice
 			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
 			$("#activeExams").append($li).append($button);
@@ -33,6 +28,12 @@ let showActiveExams = function(){
 };
 
 let uploadFile = function() {
+	//$("#uploadExam").replaceWith("Uploading")
+	let $dots = $(`<span class="loading">Uploading<span> .</span><span> .</span><span> .</span></span>`);
+	$("#uploadExam").replaceWith($dots)
+	$("#uploadButton").addClass("disabled");
+	//$("#uploadExam").append($dots);
+	//let dot = $('<span />').html('.');
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
@@ -45,7 +46,8 @@ let uploadFile = function() {
 		method: 'POST',
 		body: formData})
 	.then ( res => res.text())
-	.then ( () => console.log("uploaded?"));
+	.then ( () => console.log("uploaded?"))
+	.then (() => $("#submitButton").addClass("enabled")); //removeClass isn't working for some reason?
 }
 
 
@@ -83,14 +85,6 @@ function sendCreateMessage(){
 	if (r == true) {
 		  createExam();
 		  titleScreen();
-	} 
-}
-// Checks if user wants to end exam
-function sendEndMessage(course, exam, port){
-	
-	var r = confirm("Are you sure you'd like to end " + course + " " + exam + " listening on port " + port + "?");
-	if (r == true) {
-		endExam(course, exam, port)
 	} 
 }
 

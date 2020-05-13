@@ -22,6 +22,34 @@ body{
     background-color: lightgrey;
 }
 
+@keyframes blink {
+    0% {
+      opacity: .2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .2;
+    }
+}
+
+.loading span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+.loading span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.loading span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+
 #game 
 {
     height:85vh;
@@ -53,6 +81,10 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
+.disabled {
+	cursor: not-allowed;
+   	pointer-events: none;
+}
 
 .hidden{
     display:none;
@@ -131,6 +163,9 @@ body{
 	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 	background-color:#408c99;
 }
+.myButton.disabled {
+	opacity: 0.75;
+}
 .myButton:active {
 	position:relative;
 	top:1px;
@@ -149,6 +184,10 @@ body{
 	padding:7px 25px;
 	text-decoration:none;
     text-shadow:0px 1px 0px #5b8a3c;
+}
+
+.submitButton.disabled {
+	opacity: 0.75;
 }
 	.submitButton:hover {
 	background-color:#72b352;
