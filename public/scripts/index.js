@@ -1,23 +1,135 @@
-let today = new Date();
-let time = today.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
-let hours = today.getHours();
-let month = today.getMonth();
-let day = today.getUTCDate();
-let year = today.getFullYear();
 
-let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+//!Goal 1: Show the array of courses on screen!
+//!Goal 2: Add a course to the array of courses!
+//!Goal 3: Click a course to increase their age by one year
+//var firebase = require('firebase/app');
 
-document.getElementById('time').innerHTML = time;
-document.getElementById('date').innerHTML = months[month] + " "+ day + ", " + year;
 
-function displayGreeting() {
-  if (hours < 11) {
-    return 'good morning';
-  } if ( hours > 17) {
-    return 'good evening';
-  } else {
-    return 'good afternoon';
-  }
+// fyi posting api keys to a public github repo is not good
+// read them from a config.js file in you're .gitignore in the future
+
+let clickHandler = function() {
+	var x = document.getElementById("contact-screen");
+	var y = document.getElementById("main-grid");
+	if (y.style.display === "none") {
+	  y.style.display = "grid";
+	  x.style.display = "none";
+	} else {
+	x.style.display = "none";
+	  y.style.display = "none";
+	}
+}
+var count = 0;
+let contactClickHandler = function() {
+	var x = document.getElementById("contact-screen");
+	var y = document.getElementById("main-grid");
+	if (x.style.display === "none" || count == 0) {
+		count++;
+	  x.style.display = "grid";
+	  y.style.display = "none";
+	} else {
+	y.style.display = "none";
+	  x.style.display = "none";
+	}
 }
 
-document.getElementById('greeting').innerHTML = displayGreeting();
+
+let showActiveExams = function(){
+	// There are better ways to do this.. move fast/break things
+	
+	$("#activeExams").empty();
+	const url = "http://64.225.15.171:2020/containers";
+	fetch (url, {method: 'GET'})
+	.then ( (res) => res.json())
+	.then ( (containers) => {
+		containers.map ( data => {
+			let $li = $(`<li><span>${data.course} ${data.exam} is active</span></li>`);
+			let $button = $(`<type="button" class="endButton" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
+			// I'm not sure why this was bound twice
+			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
+			$("#activeExams").append($li).append($button);
+		});
+	});
+};
+
+let uploadFile = function() {
+	let course = $("#coursenumber").val();
+	let exam = $("#examname").val();
+	let port = $('#portnumber').val();
+	
+	let file = document.getElementById('myFile').files[0];
+	let formData = new FormData();
+	formData.append('course', file);
+	const url = `http://64.225.15.171:2020/uploadCourse?course=${course}&exam=${exam}&port=${port}`;
+	fetch (url, {
+		method: 'POST',
+		body: formData})
+	.then ( res => res.text())
+	.then ( () => console.log("uploaded?"));
+}
+
+
+let createExam = function() {
+	let course = $("#coursenumber").val();
+	let exam = $("#examname").val();
+	let port = $('#portnumber').val();
+
+	const url = `http://64.225.15.171:2020/create?course=${course}&exam=${exam}&port=${port}`;
+	fetch (url, {method: 'GET'})
+	.then ( res => res.text())
+	.then ( body => console.log(body))
+	.then ( () => {
+		clickHandler();
+		showActiveExams();
+	});
+}
+
+let endExam = function(course, exam, port) {
+	console.log(`deleting ${exam} from ${course} running on ${port}`);
+	
+	const url = `http://64.225.15.171:2020/delete?course=${course}&exam=${exam}&port=${port}`;
+	fetch (url, {method: 'GET'})
+	.then ( res => res.text())
+	.then ( body => console.log(body))
+	.then ( () => showActiveExams());
+
+	// For now this actually destroys the container. We should seperate 'stop' and 'delete' eventually
+	
+}
+
+// Checks if user wants to create exam
+function sendCreateMessage(){
+	var r = confirm("Are you sure you'd like to create this exam?");
+	if (r == true) {
+		  createExam();
+		  titleScreen();
+	} 
+}
+// Checks if user wants to end exam
+function sendEndMessage(course, exam, port){
+	
+	var r = confirm("Are you sure you'd like to end " + course + " " + exam + " listening on port " + port + "?");
+	if (r == true) {
+		endExam(course, exam, port)
+	} 
+}
+
+function timeLimit() {
+	// Get the checkbox
+	var checkBox = document.getElementById("time");
+	var text = document.getElementById("timelimit");
+
+	// If the checkbox is checked, display the output text
+	if (checkBox.checked == true){
+		text.style.display = "block";
+	}
+	else {
+		text.style.display = "none";
+	}
+}
+function showAbout2()
+{
+    alert("bonjour");
+}
+//Im sorry
+showActiveExams();

@@ -8,18 +8,16 @@
         <p>Moodle Course Generator</p>
       </div>
       <nav class="menu">
-        <li class="active">Home</li>
-        <li>Create Exam</li>
+        <li class="active"><a onClick="clickHandler();">Home</a></li>
+        <li>Create Exam</a></li>
         <li>About</li>
         <li>Instructions</li>
-        <li>Contacts</li>
+        <li><a onClick="contactClickHandler();">Contacts</a></li>
       </nav>
     </div>
-    <div class="main-grid">
+    <div class="main-grid" id="main-grid">
       <div class="item one">
-        <h1 id="time" class="time"></h1>
-        <h1 id="greeting"></h1>
-        <p>julie</p>
+        <h1>Active Exams</h1>
       </div>
       <div class="item two">
         <div class="music"><p>now playing</p></div>
@@ -111,6 +109,38 @@
           
         </div>
       </div>
+    </div>
+
+    <div class="hidden" id="course-screen" ></div>
+
+    <div class="contact-screen" id="contact-screen" >
+        <div class="item onesmall">
+            <h1>Contacts</h1>
+          </div>
+          
+          <div class="item five">
+            <div class="rooms--top">
+              <p>Created by CISC475 Spring 2020 Semester Group 2</p>
+            </div>
+            <div class="rooms">
+              <ul>
+                  <li>Amelia Abobo</li>
+                  <li>Steven Chen</li>
+                  <li>Alena Gusakov</li>
+                  <li>Erin O'Connor</li>
+                  <li>Kevin Peachman</li>
+                  <li>Amaad Rafi</li>
+              </ul>
+            </div>
+          </div>
+          <div class="item six">
+            <div class="reminders">
+              <p><a href = "https://www1.udel.edu/it/">UD Tech Support</a></p>
+              <div class="reminder--btns">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+          </div>
     </div>
   </div>
   
