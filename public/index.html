@@ -1,117 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" type="text/css" href="style/styles.css">
+<script src="scripts/index.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Moodle Exam Generator</title>
-    <link rel="stylesheet" href="style/styles.css">
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--<script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-          apiKey: "AIzaSyDmIv2A_bZpOvvLC72Vj7zOVoLlviMoDLM",
-          authDomain: "moodle-92a91.firebaseapp.com",
-          databaseURL: "https://moodle-92a91.firebaseio.com",
-          projectId: "moodle-92a91",
-          storageBucket: "moodle-92a91.appspot.com",
-          messagingSenderId: "108875363124",
-          appId: "1:108875363124:web:78afb905166d42c89dab61"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>-->
-    <script type="text/javascript" src="scripts/index.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=B612' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
-
-
-</head>
-
-<body>
-    <!-- Home page -->
-    <div class="container-fluid">
-    <div id="start-page">
-        <header>
-        <h1>Moodle Course Generator</h1>
-        </header>
-        <main>
-        <div class="start-page-body"></div>
-        <div class="text-center start-exam">
-            <button onclick="clickHandler()" type="button" class="myButton">Create Exam</button>
-        
-        <h3><b>Active Exams:</b></h3>
-            <ul id="activeExams">
-            </ul>
-        <br />
-        <br />
+<div id="dashboard-container">
+    <div class="leftside-menu">
+      <div class="avatar">
+        <div class="icon"><p>UD</p></div>
+        <p>Moodle Course Generator</p>
+      </div>
+      <nav class="menu">
+        <li class="active">Home</li>
+        <li>Create Exam</li>
+        <li>About</li>
+        <li>Instructions</li>
+        <li>Contacts</li>
+      </nav>
     </div>
-    </div>
-    </div>
-</main>
-
-    <div class="container-fluid">
-        <!-- Add course page -->
-        <div class="hidden" id="courseScreen">
-            <!-- Info bar that will hold home button -->
-            <div class="row" id="infoBar">
-                <div class="col" id="buttonContainer">
-                    <div class="text-center back-button">
-                        <button onclick="clickHandler()" type="button" class="myButton">Home</button>
-                    </div>
-                    <div class="text-center title-text">
-                        Starting An Exam
-                    </div>
-    </div>
-    </div>
-    <div class="row" id="inputBar">
-        <div class="col" id="inputContainer">
-    <label for="coursenumber"> Course Number:
-        <input type="text" id="coursenumber" placeholder="Format CISCXXX"/>
-    </label>
-    <label for="examname"> Exam Name: 
-        <input type="text" id="examname" placeholder="Exam Name Here"/>
-    </label>
-    <label for="portnumber"> Port Number: 
-        <input type="number" id="portnumber" placeholder="8001"/>
-    </label>
-
-    <input type="checkbox" id="time" name="timedexam" value="minutes" onclick="timeLimit()">
-    <label for="vehicle1"> There is a <b>time limit</b> for this exam</label><br>
-    <label for="examminutes" id="timelimit" style="display:none"> Exam Time: 
-        <input type="text" id="examminutes" placeholder="Time In Minutes"/>
-    </label>
-    <label for="coursezip"> Moodle Course: 
-        <input type="file" id="myFile" name="filename" accept=".mbz">
-	<button onclick="uploadFile()" type="button" class="myButton"> Upload Exam </button>
-    </label>
-    <br><br>
-        <div class="row" id="footer">
-        <div class="col" id="buttonContainer">
-        <div class="text-center submit-button">
-            <button onclick="sendCreateMessage()" type="button" class="submitButton">Create Exam</button>
+    <div class="main-grid">
+      <div class="item one">
+        <h1 id="time" class="time"></h1>
+        <h1 id="greeting"></h1>
+        <p>julie</p>
+      </div>
+      <div class="item two">
+        <div class="music"><p>now playing</p></div>
+        <div class="info">
+          <div class="progress-bar">
+            <div class="time--current">1:25</div>
+            <div class="time--total">-3:25</div>
+            <div class="fill"></div>
+          </div>
+          <div class="currently-playing">
+            <h2 class="song-name">Paris in the Rain</h2>
+            <h3 class="artist-name">Lauv</h3>
+          </div>
+          <div class="controls">
+            <div class="option"><i class="fas fa-bars"></i></div>
+            <div class="volume"><i class="fas fa-volume-up"></i></div>
+            <div class="previous"><i class="fas fa-backward"></i></div>
+            <div class="play"><i class="fas fa-play"></i></div>
+            <div class="next"><i class="fas fa-forward"></i></div>
+            <div class="shuffle"><i class="fas fa-random"></i></div>
+            <div class="add"><i class="fas fa-plus"></i></div>
+          </div>
         </div>
+      </div>
+      <div class="item three">
+        <h2><i class="fas fa-cloud-sun"></i> 57&#176;</h2>
+        <div class="weather">
+          <p>cloudy skies</p>
+          <p class="city">Seattle, WA</p>
         </div>
+      </div>
+      <div class="item four">
+        <h1 id="date"></h1>
+        <p><a>no events today</a></p>
+      </div>
+      
+      <div class="item five">
+        <div class="rooms--top">
+          <p>lights</p>
         </div>
+        <div class="rooms">
+          <div class="rooms--btns">
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox" checked>
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Bedroom</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Bathroom</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox" checked>
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Kitchen</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Living Room</span>
+            </label>
+            <label class="toggle">
+              <input class="toggle-checkbox" type="checkbox">
+              <div class="toggle-switch"></div>
+              <span class="toggle-label">Study</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="item six">
+        <div class="reminders">
+          <p>reminders</p>
+          <div class="reminder--btns">
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+        </div>
+        <div class="reminders--list">
+          <label class="todo">
+            <input class="todo-checkbox" type="checkbox" checked>
+            <div class="todo-switch"></div>
+            <span class="todo-label">pay bills</span>
+          </label>
+          <label class="todo">
+            <input class="todo-checkbox" type="checkbox">
+            <div class="todo-switch"></div>
+            <span class="todo-label">go grocery shopping</span>
+          </label>        
+          
+        </div>
+      </div>
     </div>
-</div>
-</div>
-</div>
-
-
-    <!-- Bootstrap javascript libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+  </div>
+  
+  <footer>
+    <p><a target="_blank" >University of Delaware</a>
+  </footer>
