@@ -116,7 +116,8 @@ body {
 	font-size: large;
 	font-family: 'Raleway', sans-serif;
 	height: 325px;
-    width: 525px;
+	width: 525px;
+	position: relative;
 }
 
 .color-box {
@@ -378,13 +379,6 @@ h2 i {
   margin-top: 8px;
 }
 
-#date {
-  color: #B7CEE8;
-  font-family: "PT Mono", monospace;
-  font-size: 1.3em;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
 
 .five {
   grid-area: five;
@@ -468,3 +462,95 @@ body .center .select-button {
     bottom:0;
     right:0;
   }
+  .button {
+	box-sizing: border-box;
+	height: 30px;
+	width: 80px;
+	display: table;
+	font-size: 12px;
+	font-weight: bold;
+	box-shadow: 0px 0px 5px 0px rgba(158, 231, 158, 0.55);
+	-webkit-transition: background .5s;
+	transition: background .5s;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+	background-color: lightgreen;
+	opacity:0.7;
+  }
+  .button span {
+	width: 80%;
+	height: 80%;
+	padding: 10px;
+	color: green;
+	box-shadow: 0 0 0 3px lightseagreen;
+	background: transparent;
+  }
+  .button .away {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+  }
+  .button .over {
+	display: none;
+  }
+  .button:hover span.away {
+	display: none;
+  }
+  .button:hover span.over {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	box-shadow: none;
+  }
+  .button:hover {
+	background: #2D3142;
+  }
+  .uploadbutton {
+	box-sizing: border-box;
+	height: 20px;
+	width: 90px;
+	display: table;
+	font-size: 12px;
+	font-weight: bold;
+	box-shadow: 0px 0px 5px 0px rgba(158, 202, 231, 0.55);
+	-webkit-transition: background .5s;
+	transition: background .5s;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+	background-color: lightsteelblue;
+	opacity:0.8;
+	position: absolute;
+	right:55;
+	bottom:55;
+  }
+  .uploadbutton span {
+	width: 80%;
+	height: 80%;
+	padding: 10px;
+	color: lightslategray;
+	box-shadow: 0 0 0 3px lightseagreen;
+	background: transparent;
+  }
+  .uploadbutton .away {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+  }
+  .uploadbutton .over {
+	display: none;
+  }
+  .uploadbutton:hover span.away {
+	display: none;
+  }
+  .uploadbutton:hover span.over {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	box-shadow: none;
+  }
+  .uploadbutton:hover {
+	background: #2D3142;
+  }
+  
