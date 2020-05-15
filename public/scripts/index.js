@@ -1,4 +1,3 @@
-
 //!Goal 1: Show the array of courses on screen!
 //!Goal 2: Add a course to the array of courses!
 //!Goal 3: Click a course to increase their age by one year
@@ -9,33 +8,117 @@
 // read them from a config.js file in you're .gitignore in the future
 
 let clickHandler = function() {
+	var a = document.getElementById("instruct-screen");
+	var b = document.getElementById("create-screen");
 	var x = document.getElementById("contact-screen");
 	var y = document.getElementById("main-grid");
+	var z = document.getElementById("about-screen");
 	if (y.style.display === "none") {
 	  y.style.display = "grid";
 	  x.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
 	} else {
 	x.style.display = "none";
 	  y.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
 	}
 }
-var count = 0;
-let contactClickHandler = function() {
+var ccount = 0;
+var acount = 0;
+var icount = 0;
+var crcount = 0;
+let createClickHandler = function() {
+	var a = document.getElementById("instruct-screen");
+	var b = document.getElementById("create-screen");
 	var x = document.getElementById("contact-screen");
 	var y = document.getElementById("main-grid");
-	if (x.style.display === "none" || count == 0) {
-		count++;
-	  x.style.display = "grid";
+	var z = document.getElementById("about-screen");
+	if (b.style.display === "none" || crcount == 0) {
+		ccount++;
+	  b.style.display = "grid";
 	  y.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  x.style.display = "none";
 	} else {
 	y.style.display = "none";
 	  x.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
+	}
+}
+
+let aboutClickHandler = function() {
+	var a = document.getElementById("instruct-screen");
+	var b = document.getElementById("create-screen");
+	var x = document.getElementById("contact-screen");
+	var y = document.getElementById("main-grid");
+	var z = document.getElementById("about-screen");
+	if (z.style.display === "none" || acount == 0) {
+		acount++;
+	  z.style.display = "grid";
+	  x.style.display = "none";
+	  y.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
+	} else {
+	z.style.display = "none";
+	  x.style.display = "none";
+	  y.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
+	}
+}
+let instructClickHandler = function() {
+	var a = document.getElementById("instruct-screen");
+	var b = document.getElementById("create-screen");
+	var x = document.getElementById("contact-screen");
+	var y = document.getElementById("main-grid");
+	var z = document.getElementById("about-screen");
+	if (a.style.display === "none" || icount == 0) {
+		acount++;
+	  a.style.display = "grid";
+	  x.style.display = "none";
+	  y.style.display = "none";
+	  z.style.display = "none";
+	  b.style.display = "none";
+	} else {
+	z.style.display = "none";
+	  x.style.display = "none";
+	  y.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
+	}
+}
+let contactClickHandler = function() {
+	var a = document.getElementById("instruct-screen");
+	var b = document.getElementById("create-screen");
+	var x = document.getElementById("contact-screen");
+	var y = document.getElementById("main-grid");
+	var z = document.getElementById("about-screen");
+	if (x.style.display === "none" || ccount == 0) {
+		ccount++;
+	  x.style.display = "grid";
+	  y.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
+	} else {
+	y.style.display = "none";
+	  x.style.display = "none";
+	  z.style.display = "none";
+	  a.style.display = "none";
+	  b.style.display = "none";
 	}
 }
 
 
 let showActiveExams = function(){
-	// There are better ways to do this.. move fast/break things
 	
 	$("#activeExams").empty();
 	const url = "http://64.225.15.171:2020/containers";
@@ -43,11 +126,9 @@ let showActiveExams = function(){
 	.then ( (res) => res.json())
 	.then ( (containers) => {
 		containers.map ( data => {
-			let $li = $(`<li><span>${data.course} ${data.exam} is active</span></li>`);
-			let $button = $(`<type="button" class="endButton" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">End Exam</button>`);
-			// I'm not sure why this was bound twice
-			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
-			$("#activeExams").append($li).append($button);
+			let $li = $(`<div class="item">Course: <b>${data.course}</b> <br>Exam: <b>${data.exam}</b><br>Port: <b>${data.port}</b><div class="center">
+			<div class="select-button" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">Stop</div></div></div>`);
+			$("#activeExams").append($li);
 		});
 	});
 };
@@ -102,7 +183,7 @@ function sendCreateMessage(){
 	var r = confirm("Are you sure you'd like to create this exam?");
 	if (r == true) {
 		  createExam();
-		  titleScreen();
+		  clickHandler();
 	} 
 }
 // Checks if user wants to end exam
@@ -127,9 +208,22 @@ function timeLimit() {
 		text.style.display = "none";
 	}
 }
-function showAbout2()
-{
-    alert("bonjour");
-}
+
+$(function(){
+	function list(){
+		$('.grid span').removeClass('active');
+		$('.list span').addClass('active');
+		$('.wrapper').removeClass('grid').addClass('list');
+	}	
+	
+	function grid(){
+		$('.list span').removeClass('active');
+		$('.grid span').addClass('active');
+		$('.wrapper').removeClass('list').addClass('grid');
+	}	
+	
+	$('.list').click(list);
+	$('.grid').click(grid);
+});
 //Im sorry
 showActiveExams();

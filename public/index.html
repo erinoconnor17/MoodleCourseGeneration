@@ -1,4 +1,7 @@
+<title>Moodle Course Generation</title>
+<link rel="icon" href="https://cdn.iconscout.com/icon/free/png-512/moodle-2-569555.png">
 <link rel="stylesheet" type="text/css" href="style/styles.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="scripts/index.js"></script>
 
 <div id="dashboard-container">
@@ -8,10 +11,10 @@
         <p>Moodle Course Generator</p>
       </div>
       <nav class="menu">
-        <li class="active"><a onClick="clickHandler();">Home</a></li>
-        <li>Create Exam</a></li>
-        <li>About</li>
-        <li>Instructions</li>
+        <li class="active"><a onClick="clickHandler();"> Active Exams </a></li>
+        <li><a onClick="createClickHandler();">Create Exam</a></li>
+        <li><a onClick="aboutClickHandler();">About</a></li>
+        <li><a onClick = "instructClickHandler();">Instructions</a></li>
         <li><a onClick="contactClickHandler();">Contacts</a></li>
       </nav>
     </div>
@@ -19,99 +22,79 @@
       <div class="item one">
         <h1>Active Exams</h1>
       </div>
-      <div class="item two">
-        <div class="music"><p>now playing</p></div>
-        <div class="info">
-          <div class="progress-bar">
-            <div class="time--current">1:25</div>
-            <div class="time--total">-3:25</div>
-            <div class="fill"></div>
-          </div>
-          <div class="currently-playing">
-            <h2 class="song-name">Paris in the Rain</h2>
-            <h3 class="artist-name">Lauv</h3>
-          </div>
-          <div class="controls">
-            <div class="option"><i class="fas fa-bars"></i></div>
-            <div class="volume"><i class="fas fa-volume-up"></i></div>
-            <div class="previous"><i class="fas fa-backward"></i></div>
-            <div class="play"><i class="fas fa-play"></i></div>
-            <div class="next"><i class="fas fa-forward"></i></div>
-            <div class="shuffle"><i class="fas fa-random"></i></div>
-            <div class="add"><i class="fas fa-plus"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="item three">
-        <h2><i class="fas fa-cloud-sun"></i> 57&#176;</h2>
-        <div class="weather">
-          <p>cloudy skies</p>
-          <p class="city">Seattle, WA</p>
-        </div>
-      </div>
-      <div class="item four">
-        <h1 id="date"></h1>
-        <p><a>no events today</a></p>
-      </div>
+            <div class="buttons">
+                <div class="list"><span></span><span></span></div>
+                <div class="grid"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span></div>
+              </div>
+              <div class="wrapper" id="activeExams">
+                  <!-- Active exams go here!-->
+              </div>
       
-      <div class="item five">
-        <div class="rooms--top">
-          <p>lights</p>
-        </div>
-        <div class="rooms">
-          <div class="rooms--btns">
-            <label class="toggle">
-              <input class="toggle-checkbox" type="checkbox" checked>
-              <div class="toggle-switch"></div>
-              <span class="toggle-label">Bedroom</span>
-            </label>
-            <label class="toggle">
-              <input class="toggle-checkbox" type="checkbox">
-              <div class="toggle-switch"></div>
-              <span class="toggle-label">Bathroom</span>
-            </label>
-            <label class="toggle">
-              <input class="toggle-checkbox" type="checkbox" checked>
-              <div class="toggle-switch"></div>
-              <span class="toggle-label">Kitchen</span>
-            </label>
-            <label class="toggle">
-              <input class="toggle-checkbox" type="checkbox">
-              <div class="toggle-switch"></div>
-              <span class="toggle-label">Living Room</span>
-            </label>
-            <label class="toggle">
-              <input class="toggle-checkbox" type="checkbox">
-              <div class="toggle-switch"></div>
-              <span class="toggle-label">Study</span>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="item six">
-        <div class="reminders">
-          <p>reminders</p>
-          <div class="reminder--btns">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-        </div>
-        <div class="reminders--list">
-          <label class="todo">
-            <input class="todo-checkbox" type="checkbox" checked>
-            <div class="todo-switch"></div>
-            <span class="todo-label">pay bills</span>
-          </label>
-          <label class="todo">
-            <input class="todo-checkbox" type="checkbox">
-            <div class="todo-switch"></div>
-            <span class="todo-label">go grocery shopping</span>
-          </label>        
-          
-        </div>
-      </div>
     </div>
 
-    <div class="hidden" id="course-screen" ></div>
+    <div class="create-screen" id="create-screen">
+        <div class="item one">
+          <h1>Create an Exam</h1>
+        </div>
+        <div class="row" id="inputBar">
+            <div class="col" id="inputContainer">
+        <label for="coursenumber"> Course Number:
+            <input type="text" id="coursenumber" placeholder="Format CISCXXX"/>
+        </label>
+        <br><br>
+        <label for="examname"> Exam Name: 
+            <input type="text" id="examname" placeholder="Exam Name Here"/>
+        </label>
+        <br><br>
+        <label for="portnumber"> Port Number: 
+            <input type="number" id="portnumber" placeholder="8001"/>
+        </label>
+        <br><br>
+        <input type="checkbox" id="time" name="timedexam" value="minutes" onclick="timeLimit()">
+        <label for="vehicle1"> There is a <b>time limit</b> for this exam</label><br>
+        <label for="examminutes" id="timelimit" style="display:none"> Exam Time: 
+            <input type="text" id="examminutes" placeholder="Time In Minutes"/>
+        </label>
+        <br><br>
+        <label for="coursezip"> Moodle Course: 
+            <input type="file" id="myFile" name="filename" accept=".mbz">
+        <button onclick="uploadFile()" type="button" class="myButton"> Upload Exam </button>
+        </label>
+      </div>
+      <div class="text-center submit-button">
+        <button onclick="sendCreateMessage()" type="button" class="submitButton">Create Exam</button>
+    </div>
+      </div>
+    </div>
+    <div class="about-screen" id="about-screen" >
+        <div class="item one">
+            <h1>About</h1>
+          </div>
+          
+          <div class="item fivewide">
+            <div class="rooms--top">
+              <p>General Application Info</p>
+            </div>
+            <div class="rooms">
+              <p>Insert info</p>
+            </div>
+          </div>
+  </div>
+
+  <div class="instruct-screen" id="instruct-screen" >
+    <div class="item one">
+        <h1>How To Use</h1>
+      </div>
+      
+      <div class="item fivewide">
+        <div class="rooms--top">
+          <p>Instructions</p>
+        </div>
+        <div class="rooms">
+          <p>Insert info</p>
+        </div>
+      </div>
+</div>
 
     <div class="contact-screen" id="contact-screen" >
         <div class="item onesmall">
@@ -133,7 +116,7 @@
               </ul>
             </div>
           </div>
-          <div class="item six">
+          <div class="item sixleft">
             <div class="reminders">
               <p><a href = "https://www1.udel.edu/it/">UD Tech Support</a></p>
               <div class="reminder--btns">
