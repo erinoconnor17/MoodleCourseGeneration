@@ -1,12 +1,5 @@
-//!Goal 1: Show the array of courses on screen!
-//!Goal 2: Add a course to the array of courses!
-//!Goal 3: Click a course to increase their age by one year
-//var firebase = require('firebase/app');
-
-
-// fyi posting api keys to a public github repo is not good
-// read them from a config.js file in you're .gitignore in the future
-
+// The following few functions hide the other screens when one is displaying
+// It's ugly code but it works
 let clickHandler = function() {
 	var a = document.getElementById("instruct-screen");
 	var b = document.getElementById("create-screen");
@@ -16,12 +9,6 @@ let clickHandler = function() {
 	if (y.style.display === "none") {
 	  y.style.display = "grid";
 	  x.style.display = "none";
-	  z.style.display = "none";
-	  a.style.display = "none";
-	  b.style.display = "none";
-	} else {
-	x.style.display = "none";
-	  y.style.display = "none";
 	  z.style.display = "none";
 	  a.style.display = "none";
 	  b.style.display = "none";
@@ -38,19 +25,13 @@ let createClickHandler = function() {
 	var y = document.getElementById("main-grid");
 	var z = document.getElementById("about-screen");
 	if (b.style.display === "none" || crcount == 0) {
-		ccount++;
+		crcount++;
 	  b.style.display = "grid";
 	  y.style.display = "none";
 	  z.style.display = "none";
 	  a.style.display = "none";
 	  x.style.display = "none";
-	} else {
-	y.style.display = "none";
-	  x.style.display = "none";
-	  z.style.display = "none";
-	  a.style.display = "none";
-	  b.style.display = "none";
-	}
+	} 
 }
 
 let aboutClickHandler = function() {
@@ -66,13 +47,7 @@ let aboutClickHandler = function() {
 	  y.style.display = "none";
 	  a.style.display = "none";
 	  b.style.display = "none";
-	} else {
-	z.style.display = "none";
-	  x.style.display = "none";
-	  y.style.display = "none";
-	  a.style.display = "none";
-	  b.style.display = "none";
-	}
+	} 
 }
 let instructClickHandler = function() {
 	var a = document.getElementById("instruct-screen");
@@ -81,17 +56,11 @@ let instructClickHandler = function() {
 	var y = document.getElementById("main-grid");
 	var z = document.getElementById("about-screen");
 	if (a.style.display === "none" || icount == 0) {
-		acount++;
+		icount++;
 	  a.style.display = "grid";
 	  x.style.display = "none";
 	  y.style.display = "none";
 	  z.style.display = "none";
-	  b.style.display = "none";
-	} else {
-	z.style.display = "none";
-	  x.style.display = "none";
-	  y.style.display = "none";
-	  a.style.display = "none";
 	  b.style.display = "none";
 	}
 }
@@ -108,15 +77,17 @@ let contactClickHandler = function() {
 	  z.style.display = "none";
 	  a.style.display = "none";
 	  b.style.display = "none";
-	} else {
-	y.style.display = "none";
-	  x.style.display = "none";
-	  z.style.display = "none";
-	  a.style.display = "none";
-	  b.style.display = "none";
-	}
+	} 
 }
 
+//!Goal 1: Show the array of courses on screen!
+//!Goal 2: Add a course to the array of courses!
+//!Goal 3: Click a course to increase their age by one year
+//var firebase = require('firebase/app');
+
+
+// fyi posting api keys to a public github repo is not good
+// read them from a config.js file in you're .gitignore in the future
 
 let showActiveExams = function(){
 	
