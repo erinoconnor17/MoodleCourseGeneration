@@ -12,7 +12,6 @@ let fileUploaded = function() {
 	console.log("button switcharoo");
 	$('#submit').toggle();
 	$('#upload').toggle();
-	//$("#uploadExam").replaceWith(" Upload Exam ");
 }
 
 
@@ -38,7 +37,6 @@ let showActiveExams = function(){
 let uploadFile = function() {
 	let $dots = $(`<span class="button-text loading" id="uploadExam">Uploading<span> .</span><span> .</span><span> .</span></span>`);
 	$("#uploadExam").replaceWith($dots)
-	//$("#uploadButton").addClass("disabled");
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
