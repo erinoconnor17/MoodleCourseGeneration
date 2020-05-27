@@ -74,6 +74,7 @@ let createExam = function() {
 		$("#portnumber").val('');
 		$("#timedexam").val('');
 		$("#examminutes").val('');
+		$("#myFile").val('');
 		fileUploaded();
 		clickHandler();
 		showActiveExams();
