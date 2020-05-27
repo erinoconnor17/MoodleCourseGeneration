@@ -8,10 +8,17 @@ let clickHandler = function() {
 	$('#courseScreen').toggle();
 }
 
+let fileUploaded = function() {
+	console.log("button switcharoo");
+	$('#submit').toggle();
+	$('#upload').toggle();
+	//$("#uploadExam").replaceWith(" Upload Exam ");
+}
+
 
 let showActiveExams = function(){
 	// There are better ways to do this.. move fast/break things
-	
+	console.log("in showActiveExams");
 	$("#activeExams").empty();
 	const url = "http://64.225.15.171:2020/containers";
 	fetch (url, {method: 'GET'})
@@ -23,17 +30,15 @@ let showActiveExams = function(){
 			// I'm not sure why this was bound twice
 			//$button.on('click', endExam.bind(this, data.course, data.exam, data.port));
 			$("#activeExams").append($li).append($button);
+			console.log($li);
 		});
 	});
 };
 
 let uploadFile = function() {
-	//$("#uploadExam").replaceWith("Uploading")
-	let $dots = $(`<span class="loading">Uploading<span> .</span><span> .</span><span> .</span></span>`);
+	let $dots = $(`<span class="button-text loading" id="uploadExam">Uploading<span> .</span><span> .</span><span> .</span></span>`);
 	$("#uploadExam").replaceWith($dots)
-	$("#uploadButton").addClass("disabled");
-	//$("#uploadExam").append($dots);
-	//let dot = $('<span />').html('.');
+	//$("#uploadButton").addClass("disabled");
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
@@ -47,7 +52,10 @@ let uploadFile = function() {
 		body: formData})
 	.then ( res => res.text())
 	.then ( () => console.log("uploaded?"))
-	.then (() => $("#submitButton").addClass("enabled")); //removeClass isn't working for some reason?
+	.then (() => { let $upload = $(`<span class="button-text" id="uploadExam"> Upload Exam </span>`); //i'm so sorry for this hacky nonsense
+					$("#uploadExam").replaceWith($upload);
+	})
+	.then (() => fileUploaded())
 }
 
 
@@ -61,6 +69,12 @@ let createExam = function() {
 	.then ( res => res.text())
 	.then ( body => console.log(body))
 	.then ( () => {
+		$("#coursenumber").val(''); //feel free to clean this code up
+		$("#examname").val(''); //is janky
+		$("#portnumber").val('');
+		$("#timedexam").val('');
+		$("#examminutes").val('');
+		fileUploaded();
 		clickHandler();
 		showActiveExams();
 	});
@@ -84,7 +98,7 @@ function sendCreateMessage(){
 	var r = confirm("Are you sure you'd like to create this exam?");
 	if (r == true) {
 		  createExam();
-		  titleScreen();
+		  //titleScreen();
 	} 
 }
 
