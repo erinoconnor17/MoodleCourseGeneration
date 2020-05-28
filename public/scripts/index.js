@@ -7,6 +7,11 @@ let clickHandler = function() {
 	var y = document.getElementById("main-grid");
 	var z = document.getElementById("about-screen");
 	if (y.style.display === "none") {
+	document.getElementById("active").className = "active";
+	document.getElementById("create").className = "";
+	document.getElementById("instruct").className = "";
+	document.getElementById("about").className = "";
+	document.getElementById("contact").className = "";
 	  y.style.display = "grid";
 	  x.style.display = "none";
 	  z.style.display = "none";
@@ -26,6 +31,11 @@ let createClickHandler = function() {
 	var z = document.getElementById("about-screen");
 	if (b.style.display === "none" || crcount == 0) {
 		crcount++;
+	document.getElementById("create").className = "active";
+	document.getElementById("active").className = "";
+	document.getElementById("instruct").className = "";
+	document.getElementById("about").className = "";
+	document.getElementById("contact").className = "";
 	  b.style.display = "grid";
 	  y.style.display = "none";
 	  z.style.display = "none";
@@ -42,6 +52,11 @@ let aboutClickHandler = function() {
 	var z = document.getElementById("about-screen");
 	if (z.style.display === "none" || acount == 0) {
 		acount++;
+	document.getElementById("about").className = "active";
+	document.getElementById("active").className = "";
+	document.getElementById("create").className = "";
+	document.getElementById("instruct").className = "";
+	document.getElementById("contact").className = "";
 	  z.style.display = "grid";
 	  x.style.display = "none";
 	  y.style.display = "none";
@@ -57,6 +72,11 @@ let instructClickHandler = function() {
 	var z = document.getElementById("about-screen");
 	if (a.style.display === "none" || icount == 0) {
 		icount++;
+	  document.getElementById("instruct").className = "active";
+	  document.getElementById("active").className = "";
+	  document.getElementById("create").className = "";
+	  document.getElementById("contact").className = "";
+	  document.getElementById("about").className = "";
 	  a.style.display = "grid";
 	  x.style.display = "none";
 	  y.style.display = "none";
@@ -72,6 +92,11 @@ let contactClickHandler = function() {
 	var z = document.getElementById("about-screen");
 	if (x.style.display === "none" || ccount == 0) {
 		ccount++;
+	  document.getElementById("contact").className = "active";
+	  document.getElementById("active").className = "";
+	  document.getElementById("create").className = "";
+	  document.getElementById("instruct").className = "";
+	  document.getElementById("about").className = "";
 	  x.style.display = "grid";
 	  y.style.display = "none";
 	  z.style.display = "none";
