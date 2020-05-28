@@ -105,8 +105,8 @@ let showActiveExams = function(){
 };
 
 let uploadFile = function() {
-	let $dots = $(`<span class="button-text loading" id="uploadExam">Uploading<span> .</span><span> .</span><span> .</span></span>`);
-	$("#uploadExam").replaceWith($dots)
+	let $dots = $(`<div id="uploadtext"><span class="disabled loading">Uploading<em>.</em><em>.</em><em>.</em></span></div>`);
+	$("#uploadtext").replaceWith($dots)
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
@@ -120,11 +120,16 @@ let uploadFile = function() {
 		body: formData})
 	.then ( res => res.text())
 	.then ( () => console.log("uploaded?"))
-	.then (() => { let $upload = $(`<span class="button-text" id="uploadExam"> Upload Exam </span>`); //i'm so sorry for this hacky nonsense
-					$("#uploadExam").replaceWith($upload);
+	.then (() => { let $upload = $(`<div id="uploadtext">
+									<span class="away">Upload File</span>
+									<span class="over">Upload File</span>
+									</div>`); //i'm so sorry for this hacky nonsense
+					$("#uploadtext").replaceWith($upload);
 	})
-	.then (() => fileUploaded())
+	//.then (() => fileUploaded())
 }
+
+
 
 
 let createExam = function() {
@@ -143,7 +148,7 @@ let createExam = function() {
 		$("#timedexam").val('');
 		$("#examminutes").val('');
 		$("#myFile").val('');
-		fileUploaded();
+		//fileUploaded();
 		clickHandler();
 		showActiveExams();
 	});

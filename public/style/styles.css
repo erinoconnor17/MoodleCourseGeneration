@@ -151,18 +151,18 @@ body {
     }
 }
 
-.loading span {
+.loading em {
     animation-name: blink;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
 }
 
-.loading span:nth-child(2) {
+.loading em:nth-child(2) {
     animation-delay: .2s;
 }
 
-.loading span:nth-child(3) {
+.loading em:nth-child(3) {
     animation-delay: .4s;
 }
 
@@ -621,6 +621,11 @@ body .center .select-button {
 	box-shadow: 0 0 0 3px lightseagreen;
 	background: transparent;
   }
+  .button .disabled {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+  }
   .button .away {
 	display: table-cell;
 	vertical-align: middle;
@@ -667,6 +672,14 @@ body .center .select-button {
 	color: lightslategray;
 	box-shadow: 0 0 0 3px lightseagreen;
 	background: transparent;
+  }
+  .uploadbutton .disabled {
+	background: #2D3142;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: #ffffff;
+	box-shadow: none;
   }
   .uploadbutton .away {
 	display: table-cell;
