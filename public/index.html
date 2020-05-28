@@ -58,17 +58,19 @@
         <br><br>
         <label for="coursezip"> Moodle Course: 
             <input type="file" id="myFile" name="filename" accept=".mbz">
-            <a class="uploadbutton" onclick="uploadFile()">
-                <span class="away">Upload File</span>
-                <span class="over">Uploading File ...</span>
+            <a class="uploadbutton" id="uploadButton" onclick="uploadFile()">
+                <span class="away" id = "uploadExam">Upload File</span>
+                <span class="over">Upload File</span>
             </a>
         </label>
       </div>
       <div class="text-center submit-button">
+      <div id = "submit" class = "hidden">
         <a class="button" onclick="sendCreateMessage()">
             <span class="away">Submit</span>
-            <span class="over">Submitting ...</span>
+            <span class="over">Submit</span>
         </a>
+      </div>
     </div>
       </div>
     </div>

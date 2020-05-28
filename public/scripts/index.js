@@ -80,17 +80,17 @@ let contactClickHandler = function() {
 	} 
 }
 
-//!Goal 1: Show the array of courses on screen!
-//!Goal 2: Add a course to the array of courses!
-//!Goal 3: Click a course to increase their age by one year
-//var firebase = require('firebase/app');
 
+let fileUploaded = function() {
+	console.log("button switcharoo");
+	$('#submit').toggle();
+	$('#upload').toggle();
+	//$("#uploadExam").replaceWith(" Upload Exam ");
+}
 
-// fyi posting api keys to a public github repo is not good
-// read them from a config.js file in you're .gitignore in the future
 
 let showActiveExams = function(){
-	
+	console.log("in showActiveExams");
 	$("#activeExams").empty();
 	const url = "http://64.225.15.171:2020/containers";
 	fetch (url, {method: 'GET'})
@@ -100,11 +100,14 @@ let showActiveExams = function(){
 			let $li = $(`<div class="item">Course: <b>${data.course}</b> <br>Exam: <b>${data.exam}</b><br>Port: <b>${data.port}</b><div class="center">
 			<div class="select-button" onclick="sendEndMessage('${data.course}','${data.exam}', '${data.port}')">Stop</div></div></div>`);
 			$("#activeExams").append($li);
+			console.log($li);
 		});
 	});
 };
 
 let uploadFile = function() {
+	let $dots = $(`<span class="button-text loading" id="uploadExam">Uploading<span> .</span><span> .</span><span> .</span></span>`);
+	$("#uploadExam").replaceWith($dots)
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
@@ -117,7 +120,10 @@ let uploadFile = function() {
 		method: 'POST',
 		body: formData})
 	.then ( res => res.text())
-	.then ( () => console.log("uploaded?"));
+	.then (() => { let $upload = $(`<span class="button-text" id="uploadExam"> Upload Exam </span>`); //i'm so sorry for this hacky nonsense
+	$("#uploadExam").replaceWith($upload);
+})
+.then (() => fileUploaded())
 }
 
 
@@ -131,6 +137,13 @@ let createExam = function() {
 	.then ( res => res.text())
 	.then ( body => console.log(body))
 	.then ( () => {
+		$("#coursenumber").val(''); //feel free to clean this code up
+		$("#examname").val(''); //is janky
+		$("#portnumber").val('');
+		$("#timedexam").val('');
+		$("#examminutes").val('');
+		$("#myFile").val('');
+		fileUploaded();
 		clickHandler();
 		showActiveExams();
 	});
