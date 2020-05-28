@@ -130,8 +130,8 @@ let showActiveExams = function(){
 };
 
 let uploadFile = function() {
-	let $dots = $(`<span class="button-text loading" id="uploadExam">Uploading<span> .</span><span> .</span><span> .</span></span>`);
-	$("#uploadExam").replaceWith($dots)
+	let $dots = $(`<div id="uploadtext"><span class="disabled loading">Uploading<em>.</em><em>.</em><em>.</em></span></div>`);
+	$("#uploadtext").replaceWith($dots)
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
 	let port = $('#portnumber').val();
@@ -151,6 +151,8 @@ let uploadFile = function() {
 }
 
 
+
+
 let createExam = function() {
 	let course = $("#coursenumber").val();
 	let exam = $("#examname").val();
@@ -167,6 +169,11 @@ let createExam = function() {
 		$("#timedexam").val('');
 		$("#examminutes").val('');
 		$("#myFile").val('');
+		let $upload = $(`<div id="uploadtext">
+									<span class="away">Upload File</span>
+									<span class="over">Upload File</span>
+									</div>`); //i'm so sorry for this hacky nonsense
+		$("#uploadtext").replaceWith($upload);
 		fileUploaded();
 		clickHandler();
 		showActiveExams();
