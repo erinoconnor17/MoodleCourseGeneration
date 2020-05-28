@@ -110,7 +110,6 @@ let fileUploaded = function() {
 	console.log("button switcharoo");
 	$('#submit').toggle();
 	$('#upload').toggle();
-	//$("#uploadExam").replaceWith(" Upload Exam ");
 }
 
 
@@ -145,7 +144,7 @@ let uploadFile = function() {
 		method: 'POST',
 		body: formData})
 	.then ( res => res.text())
-	.then (() => { let $upload = $(`<span class="button-text" id="uploadExam"> Upload Exam </span>`); //i'm so sorry for this hacky nonsense
+	.then (() => { let $upload = $(`<span class="away" id="uploadExam"> Exam Uploaded </span>`); //i'm so sorry for this hacky nonsense
 	$("#uploadExam").replaceWith($upload);
 })
 .then (() => fileUploaded())
